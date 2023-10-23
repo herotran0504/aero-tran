@@ -1,22 +1,65 @@
-const {ObjectId} = require('mongodb');
+const BaseDao = require('./BaseDao');
 
-class BookingDao {
-
-    constructor(db) {
-        this.bookings = db.collection('bookings');
+class BookingDao extends BaseDao {
+    constructor() {
+        super();
     }
 
-    async createBooking(booking) {
-        const result = await this.bookings.insertOne(booking);
-        return result.insertedId;
+    async getAllBookings() {
+        try {
+            await this.connect();
+            const bookingsCollection = this.db.collection('bookings');
+            return await bookingsCollection.find({}).toArray();
+        } finally {
+            await this.disconnect();
+        }
     }
 
-    async findBookingById(bookingId) {
-        return this.bookings.findOne({_id: new ObjectId(bookingId)});
+    // get booking by id
+    async getBookingById(id) {
+        try {
+            await this.connect();
+            const bookingsCollection = this.db.collection('bookings');
+            id = parseInt(id);
+            return await bookingsCollection.find({id:id}).toArray();
+        } finally {
+            await this.disconnect();
+        }
     }
 
-    async findBookingsByUserId(userId) {
-        return this.bookings.find({user_id: new ObjectId(userId)}).toArray();
+    // add new booking
+    async addBooking(booking) {
+        try {
+            await this.connect();
+            const bookingsCollection = this.db.collection('bookings');
+            return await bookingsCollection.insertOne(booking);
+        } finally {
+            await this.disconnect();
+        }
+    }
+
+    // delete booking by id
+    async deleteBookingById(id) {
+        try {
+            await this.connect();
+            const bookingsCollection = this.db.collection('bookings');
+            id = parseInt(id);
+            return await bookingsCollection.deleteOne({id:id});
+        } finally {
+            await this.disconnect();
+        }
+    }
+
+    // update booking by id
+    async updateBookingById(id,booking) {
+        try {
+            await this.connect();
+            const bookingsCollection = this.db.collection('bookings');
+            id = parseInt(id);
+            return await bookingsCollection.updateOne({id:id},{$set:booking});
+        } finally {
+            await this.disconnect();
+        }
     }
 }
 

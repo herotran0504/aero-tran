@@ -23,6 +23,12 @@ async function initializeDatabase() {
         const flights = await flightsCollection.find({}).toArray();
         console.log('Sample flights data:');
         console.log(flights);
+
+        // Read and print sample data from the 'flights' collection
+        const bookingsCollection = db.collection('bookings');
+        const bookings = await bookingsCollection.find({}).toArray();
+        console.log('Sample bookings data:');
+        console.log(bookings);
     } catch (error) {
         console.error('Error initializing database:', error);
     } finally {

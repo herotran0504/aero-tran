@@ -1,16 +1,14 @@
-const { MongoClient } = require('mongodb');
-
-const url = 'mongodb://0.0.0.0:27017';
-const dbName = 'aero-tran';
+const {MongoClient} = require('mongodb');
+const Const = require("./util/Const");
 
 async function initializeDatabase() {
-    const client = new MongoClient(url, { useUnifiedTopology: true });
+    const client = new MongoClient(Const.DB_URL, {useUnifiedTopology: true});
 
     try {
         await client.connect();
         console.log('Connected to MongoDB');
 
-        const db = client.db(dbName);
+        const db = client.db(Const.DB_NAME);
 
         // Read and print sample data from the 'users' collection
         const usersCollection = db.collection('users');
@@ -32,8 +30,8 @@ async function initializeDatabase() {
     } catch (error) {
         console.error('Error initializing database:', error);
     } finally {
-        client.close();
+        await client.close();
     }
 }
 
-initializeDatabase();
+module.exports = initializeDatabase

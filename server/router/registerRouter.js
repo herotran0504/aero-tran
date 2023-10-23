@@ -2,6 +2,6 @@ const express = require("express");
 const UserController = require("../controller/userController");
 let userController = new UserController();
 
-const userRouter = express.Router();
-userRouter.use("/", userController.getUserInfo);
-module.exports = userRouter;
+const registerRouter = express.Router();
+registerRouter.use("/", userController.register);
+module.exports = registerRouter;

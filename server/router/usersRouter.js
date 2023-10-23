@@ -2,6 +2,6 @@ const express = require("express");
 const UserController = require("../controller/userController");
 let userController = new UserController();
 
-const userRouter = express.Router();
-userRouter.use("/", userController.getUserInfo);
-module.exports = userRouter;
+const usersRouter = express.Router();
+usersRouter.use("/", userController.getAllUsers);
+module.exports = usersRouter;

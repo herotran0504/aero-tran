@@ -1,15 +1,14 @@
 const {MongoClient} = require('mongodb');
-const URL = 'mongodb://0.0.0.0:27017';
-const DB_NAME = 'aero-tran';
+const Const = require("../../util/Const");
 
 class BaseDao {
     constructor() {
-        this.url = URL;
-        this.dbName = DB_NAME;
+        this.dbUrl = Const.DB_URL;
+        this.dbName = Const.DB_NAME;
     }
 
     async connect() {
-        this.client = new MongoClient(this.url, {useUnifiedTopology: true});
+        this.client = new MongoClient(this.dbUrl, {useUnifiedTopology: true});
         await this.client.connect();
         this.db = this.client.db(this.dbName);
     }

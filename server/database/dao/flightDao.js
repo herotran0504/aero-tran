@@ -1,23 +1,41 @@
-const { ObjectId } = require('mongodb');
+const BaseDao = require('./BaseDao');
 
-class FlightDao {
+class FlightDao extends BaseDao {
+    constructor() {
+        super();
+    }
 
-  constructor(db) {
-    this.flights = db.collection('flights');
+    async getAllFlights() {
+        try {
+            await this.connect();
+            const flightsCollection = this.db.collection('flights');
+            return await flightsCollection.find({}).toArray();
+        } finally {
+            await this.disconnect();
+        }
+    }
+
+    async getFlightById(id) {
+      try {
+          await this.connect();
+          const flightsCollection = this.db.collection('flights');
+          return await flightsCollection.find({id}).toArray();
+      } finally {
+          await this.disconnect();
+      }
   }
 
-  async createFlight(flight) {
-    const result = await this.flights.insertOne(flight);
-    return result.insertedId;
-  }
-
-  async findFlightById(flightId) {
-    return this.flights.findOne({ _id: new ObjectId(flightId) });
-  }
-
-  async searchFlights(criteria) {
-    return this.flights.find(criteria).toArray();
-  }
+  async findFlights(query) {
+    try {
+        await this.connect();
+        const flightsCollection = this.db.collection('flights');
+         let result = await flightsCollection.find(query).toArray();
+         console.log(`filterFlight result: `, result);
+        return result;
+    } finally {
+        await this.disconnect();
+    }
+}
 }
 
 module.exports = FlightDao;

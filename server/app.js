@@ -1,7 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 
-const userRouter = require("./router/userRouter");
+const userRouter = require("./router/userRouter")
+const flightRouter = require("./router/flightRouter");
 const bookingRouter = require("./router/bookingRouter");
 
 const app = express();
@@ -12,6 +13,7 @@ app.use(express.json());
 
 app.use('/login', userRouter);
 app.use('/bookings', bookingRouter);
+app.use('/flights', flightRouter);
 
 app.use((err, req, res, next) => {
     res.status(500).json({ message: "Something went wrong: " + err.message });

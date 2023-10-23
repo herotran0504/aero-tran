@@ -1,6 +1,6 @@
 const { MongoClient } = require('mongodb');
 
-const url = 'mongodb://localhost:27017';
+const url = 'mongodb://0.0.0.0:27017';
 const dbName = 'aero-tran';
 
 async function initializeDatabase() {

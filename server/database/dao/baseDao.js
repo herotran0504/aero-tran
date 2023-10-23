@@ -1,5 +1,5 @@
 const {MongoClient} = require('mongodb');
-const URL = 'mongodb://localhost:27017';
+const URL = 'mongodb://0.0.0.0:27017';
 const DB_NAME = 'aero-tran';
 
 class BaseDao {

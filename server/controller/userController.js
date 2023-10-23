@@ -2,17 +2,8 @@ const UserRepository = require("../repository/userRepository");
 
 class UserController {
 
-    constructor(userRepository) {
-        this.userRepository = userRepository;
-    }
-
-    login() {
-        console.log("login()");
-    }
-
-    static create() {
-        let userRepository = UserRepository.create();
-        return new UserController(userRepository);
+    async getAllUsers(req, res, next) {
+        res.status(200).json(await (new UserRepository()).getAllUsers());
     }
 
 }

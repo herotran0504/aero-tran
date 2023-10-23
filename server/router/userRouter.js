@@ -1,10 +1,10 @@
 const express = require("express");
-const Controller = require("../controller/userController");
-let controller = Controller.create();
+const UserController = require("../controller/userController");
+let userController = new UserController();
 
 const router = express.Router();
 
 // get all students
-router.get("/", controller.login);
+router.get("/", userController.getAllUsers);
 
 module.exports = router;

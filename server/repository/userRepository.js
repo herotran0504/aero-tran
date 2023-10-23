@@ -2,13 +2,14 @@ const UserDao = require("../database/dao/userDao");
 
 class UserRepository {
 
-    constructor(userDao) {
-        this.userDao = userDao;
+    constructor() {
+        this.userDao = new UserDao();
     }
 
-    static create() {
-        return new UserRepository(UserDao.create());
+    async getAllUsers() {
+        return this.userDao.getAllUsers();
     }
+
 }
 
-module.exports = UserRepository;
+module.exports = UserRepository

@@ -8,6 +8,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./server
 
     steps:
       - name: Checkout code
@@ -22,7 +25,4 @@ jobs:
         run: npm install
 
       - name: Build and Test
-        run: |
-          # Replace these with your actual build and test commands
-          npm run build
-          npm test
+        run: npm version

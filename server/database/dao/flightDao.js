@@ -30,7 +30,7 @@ class FlightDao extends BaseDao {
         await this.connect();
         const flightsCollection = this.db.collection('flights');
          let result = await flightsCollection.find(query).toArray();
-         console.log(`filterFlight result: `, result);
+        //  console.log(`findFlights result: `, result);
         return result;
     } finally {
         await this.disconnect();

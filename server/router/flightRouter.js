@@ -4,7 +4,6 @@ let flightController = new FlightController();
 
 const router = express.Router();
 
-// get all students
 router.get('/', flightController.getAllFlights);
 router.get('/search', flightController.findFlights);
 router.get('/:id', flightController.getFlightById);

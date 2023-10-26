@@ -19,15 +19,15 @@ app.use(cors());
 app.use(express.json());
 
 // guest access
-app.use('/login', loginRouter);
-app.use('/register', registerRouter);
+app.post('/login', loginRouter);
+app.post('/register', registerRouter);
 app.use('/bookings', bookingRouter);
 app.use('/flights', flightRouter);
 
 // user access
 app.use('/', verifyToken);
-app.use('/users', usersRouter);
-app.use('/user', userRouter);
+app.get('/users', usersRouter);
+app.get('/user', userRouter);
 
 app.use((err, req, res, next) => {
     res.status(500).json({message: "Something went wrong: " + err.message});

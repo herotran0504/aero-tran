@@ -2,7 +2,7 @@ const {MongoClient} = require('mongodb');
 const Const = require("./util/Const");
 
 async function initializeDatabase() {
-    const client = new MongoClient(Const.DB_URL, {useUnifiedTopology: true});
+    const client = new MongoClient(Const.DB_URL);
 
     try {
         await client.connect();

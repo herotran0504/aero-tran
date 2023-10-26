@@ -1,14 +1,37 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../styles/styles.css">
     <script type="module" src="../scripts/loginScript.js"></script>
     <title>Login Page</title>
 </head>
+
 <body>
-<h1>Login Page</h1>
+    <div class="login-container">
+        <div class="login-form">
+            <h2>Login to Your Account</h2>
+            <form id="form">
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" pattern=".+" required>
+                </div>
+                <button type="submit" id="submitBtn">Login</button>
+            </form>
+        </div>
+        <div>
+            <a href="register.html">Register</a>
+        </div>
+    </div>
 </body>
+
 </html>

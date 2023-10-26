@@ -8,7 +8,7 @@ class BaseDao {
     }
 
     async connect() {
-        this.client = new MongoClient(this.dbUrl, {useUnifiedTopology: true});
+        this.client = new MongoClient(this.dbUrl);
         await this.client.connect();
         this.db = this.client.db(this.dbName);
     }

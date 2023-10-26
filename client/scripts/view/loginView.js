@@ -1,7 +1,11 @@
 export class LoginView {
 
-    displayError(error) {
+    showLoginSuccess() {
+        alert('Login successful');
+    }
 
+    showLoginError() {
+        alert('Check your email and password');
     }
 
 }

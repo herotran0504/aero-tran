@@ -1,11 +1,21 @@
 body {
     font-family: 'PT Sans', sans-serif;
     background-color: #f5f5f5;
+    background-image: url("../images/background.png");
 }
 
 h1 {
-    color: #226177;
+    color: #FFF;
     font-weight: bold;
+}
+
+label {
+    color: #FFF;
+}
+
+a {
+    text-decoration: none;
+    color: #FFF;
 }
 
 .btn-primary {
@@ -21,6 +31,7 @@ h1 {
 #divFlightDetails {
     height: 400px;
 }
+
 .my-custom-scrollbar thead th {
     position: sticky; /* make the table heads sticky */
     top: 0px; /* table head will be placed from the top of the table and sticks to it */

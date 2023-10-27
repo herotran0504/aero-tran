@@ -1,35 +1,16 @@
 export class UserInfoView {
 
     showUserInfo(user) {
-        let body = document.getElementById('tbody');
-        let html = body.innerHTML;
-        html += `
-                    <tr>
-                        <td>Username:</td>
-                        <td>${user.username}</td>
-                    </tr>
-                     <tr>
-                        <td>Email:</td>
-                        <td>${user.email}</td>
-                    </tr>
-                    <tr>
-                        <td>Name:</td>
-                        <td>${user.firstName} ${user.lastName}</td>
-                    </tr>
-                    <tr>
-                        <td>DoB:</td>
-                        <td>${user.dob}</td>
-                    </tr>
-                    <tr>
-                        <td>Address:</td>
-                        <td>${user.address}</td>
-                    </tr>
-                `;
-        body.innerHTML = html;
+        document.getElementById("userName").value = `${user.username}`;
+        document.getElementById("email").value = `${user.email}`;
+        document.getElementById("firstName").value = `${user.firstName}`;
+        document.getElementById("lastName").value = `${user.lastName}`;
+        document.getElementById("dob").value = `${user.dob}`;
+        document.getElementById("address").value = `${user.address}`;
     }
 
     showError() {
-        alert("Fetch user info error, we're notified")
+        alert("Something went wrong");
     }
 
 }

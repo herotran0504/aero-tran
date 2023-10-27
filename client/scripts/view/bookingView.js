@@ -46,6 +46,20 @@ export class BoookingView {
         }
         body.innerHTML = html;
     }
+
+    showBookingDetail(bookings) {
+        let body = document.getElementById('tbody');
+        // console.log(bookings[0].id);
+        let booking = bookings[0];
+        document.getElementById("idForUpdate").value = booking.id;
+        document.getElementById("userIdForUpdate").value = booking.userId;
+        document.getElementById("flightIdForUpdate").value = booking.flightId;
+        document.getElementById("bookingDateForUpdate").value = booking.bookingDate;
+        document.getElementById("firstNameForUpdate").value = booking.passengerInfo.firstName;
+        document.getElementById("lastNameForUpdate").value = booking.passengerInfo.lastName;
+        document.getElementById("emailForUpdate").value = booking.passengerInfo.email;
+        document.getElementById("status").value = booking.status;
+    }
    
     showError() {
         alert("Fetch user info error, we're notified")

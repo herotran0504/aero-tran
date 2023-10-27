@@ -3,43 +3,87 @@
 <head>
     <title>Booking Update</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script type="module" src="../scripts/bookingUpdateScript.js"></script>
 </head>
 <body>
+    <div class="container mt-4">
+        <h2>Update Booking detail</h2>
+        <form id="bookingForm">
+            <div class="form-group">
+                <label for="id">Booking ID:</label>
+                <input type="text" class="form-control" id="idForUpdate" name="id" readonly="true" required>
+            </div>
+            <div class="form-group">
+                <label for="userId">User ID:</label>
+                <input type="text" class="form-control" id="userIdForUpdate" readonly="true" name="userId" required>
+            </div>
+            <div class="form-group">
+                <label for="flightId">Flight ID:</label>
+                <input type="text" class="form-control" id="flightIdForUpdate" readonly="true" name="flightId" required>
+            </div>
+            <div class="form-group">
+                <label for="BookingDate">Booking Date:</label>
+                <input type="text" class="form-control" id="bookingDateForUpdate" readonly="true" name="BookingDate" required>
+            </div>
+            <div class="form-group">
+                <label>Passenger Information:</label>
+                <div class="passenger-info">
+                    <div class="form-row">
+                        <div class="col">
+                            <input type="text" class="form-control" id="firstNameForUpdate" placeholder="First Name" name="passengerFirstName[]" required>
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" id="lastNameForUpdate" placeholder="Last Name" name="passengerLastName[]" required>
+                        </div>
+                        <div class="col">
+                            <input type="email" class="form-control" id="emailForUpdate" placeholder="Email" name="passengerEmail[]" required>
+                        </div>
+                        <div class="col">
+                            <button type="button" class="btn btn-danger remove-passenger">Remove</button>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-primary add-passenger">Add Passenger</button>
+            </div>
+            <div class="form-group">
+                <label for="status">Status:</label>
+                <select class="form-control" id="status" name="status" required>
+                    <option value="confirmed">Confirmed</option>
+                    <option value="pending">Pending</option>
+                    <option value="cancelled">Cancelled</option>
+                </select>
+            </div>
+            <button type="submit" id="btnUpdate" class="btn btn-primary">Update</button>
+        </form>
+    </div>
 
-<div class="container mt-5">
-    <h2>Booking Update Details</h2>
-    <form>
-        <div class="form-group">
-            <label for="name">Full Name:</label>
-            <input type="text" class="form-control" id="name" placeholder="Enter your full name" required>
-        </div>
-        <div class="form-group">
-            <label for="email">Email Address:</label>
-            <input type="email" class="form-control" id="email" placeholder="Enter your email address" required>
-        </div>
-        <div class="form-group">
-            <label for="phone">Phone Number:</label>
-            <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number" required>
-        </div>
-        <div class="form-group">
-            <label for="checkin">Check-in Date:</label>
-            <input type="date" class="form-control" id="checkin" required>
-        </div>
-        <div class="form-group">
-            <label for="checkout">Check-out Date:</label>
-            <input type="date" class="form-control" id="checkout" required>
-        </div>
-        <div class="form-group">
-            <label for="comments">Additional Comments:</label>
-            <textarea class="form-control" id="comments" rows="4" placeholder="Any special requests or comments"></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-</div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <script>
+        // Add passenger input fields
+        $(".add-passenger").click(function() {
+            $(".passenger-info").append(
+                `<div class="form-row">
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="First Name" name="passengerFirstName[]" required>
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Last Name" name="passengerLastName[]" required>
+                    </div>
+                    <div class="col">
+                        <input type="email" class="form-control" placeholder="Email" name="passengerEmail[]" required>
+                    </div>
+                    <div class="col">
+                        <button type="button" class="btn btn-danger remove-passenger">Remove</button>
+                    </div>
+                </div>`
+            );
+        });
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+        // Remove passenger input fields
+        $(document).on("click", ".remove-passenger", function() {
+            $(this).closest(".form-row").remove();
+        });
+    </script>
 </body>
 </html>

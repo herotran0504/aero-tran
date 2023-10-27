@@ -23,22 +23,22 @@ export class BookingController {
         }
     }
 
-    async getBookings() {
+    async getBookingById(id) {
         try {
-            let result = await this.repository.requestBookings();
+            let result = await this.repository.requestBookingById(id);
             console.log(result);
-            this.view.showBooking(result);
+            this.view.showBookingDetail(result);
         } catch (error) {
             console.log(error);
             this.view.showError();
         }
     }
 
-    async getBookingById(id) {
+    async getBookings() {
         try {
-            let result = await this.repository.requestBookingById(id);
+            let result = await this.repository.requestBookings();
             console.log(result);
-            this.view.showBookings(result);
+            this.view.showBooking(result);
         } catch (error) {
             console.log(error);
             this.view.showError();

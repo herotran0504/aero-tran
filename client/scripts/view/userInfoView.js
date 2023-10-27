@@ -14,7 +14,7 @@ export class UserInfoView {
                     </tr>
                     <tr>
                         <td>Name:</td>
-                        <td>${user.name}</td>
+                        <td>${user.firstName} ${user.lastName}</td>
                     </tr>
                     <tr>
                         <td>DoB:</td>

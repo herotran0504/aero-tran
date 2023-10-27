@@ -23,6 +23,25 @@ export class UserRepository {
         }
     }
 
+    async requestRegister(username, email, password, firstName, lastName, dob, address) {
+        const url = `${URL}/register`;
+
+        const requestOptions = {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({username, email, password, firstName, lastName, dob, address}),
+        };
+
+        const response = await fetch(url, requestOptions);
+        if (response.ok) {
+            let data = response.json();
+            console.log(data);
+            return data;
+        } else {
+            throw new Error(`Register request failed with status ${response.status}`);
+        }
+    }
+
     async requestUserInfo() {
         const url = `${URL}/user`;
 

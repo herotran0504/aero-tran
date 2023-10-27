@@ -7,8 +7,25 @@ h1 {
     color: #226177;
     font-weight: bold;
 }
-
 .btn-primary {
     min-width: 50%;
     min-height: 44px;
+}
+
+.login-form {
+    background-color: #ffffff;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    padding: 20px;
+    box-shadow: 0px 0px 5px 0px #dcdcdc;
+}
+
+.my-custom-scrollbar {
+    position: relative;
+    height: 200px;
+    overflow: auto;
+}
+
+.table-wrapper-scroll-y {
+    display: block;
 }

@@ -3,15 +3,15 @@ import {BookingController} from "./controller/bookingController.js";
 const controller = BookingController.create();
 
 window.onload = async function () {
-    // const queryString = window.location.search;
-    // console.log(queryString);
-    // const urlParams = new URLSearchParams(queryString);
-    // console.log(urlParams[1]);
-    // let id = urlParams.get('flightId');
-    // let isEco = urlParams.get('isEco');
-    // console.log(id);
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    let flightId = urlParams.get('flightId');
+    let isEco = urlParams.get('isEco');
+    // console.log(flightId);
+    // console.log(isEco);
+    
     //get all bookings by current user id
-    await controller.getUserInforByLastBooking();
+    await controller.getUserInforByLastBooking(flightId,isEco);
 }
 
 // window.onDelete = async function(id) {
@@ -47,5 +47,7 @@ document.getElementById("btnAdd").addEventListener("click", async function () {
         },
         "status": status
     };
-    await controller.addBooking(booking);   
+    await controller.addBooking(booking);
+    alert("Booking successfully!");  
+    window.location.href = `/client/pages/index.html`; 
 });

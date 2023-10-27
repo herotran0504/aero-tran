@@ -34,11 +34,16 @@ export class BookingController {
         }
     }
 
-    async getUserInforByLastBooking(id) {
+    async getUserInforByLastBooking(flightId, isEco) {
         try {
+            let id = 1;
             let result = await this.repository.requestBookingByUserId(id);
+            let booking = result[0];
+            console.log(booking);
             console.log(result);
-            this.view.showUserDetail(result);
+            booking.flightId = flightId;
+            booking.status = "pending";
+            this.view.showUserDetail(booking);
         } catch (error) {
             console.log(error);
             this.view.showError();

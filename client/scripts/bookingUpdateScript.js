@@ -73,4 +73,6 @@ document.getElementById("btnUpdate").addEventListener("click", async function ()
         "status": status
     };
     await controller.updateBooking(booking);   
+    alert("Booking update successfully!");
+    window.location.href = `/client/pages/bookingdetails.html`;
 });

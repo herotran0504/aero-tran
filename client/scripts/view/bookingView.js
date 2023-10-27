@@ -61,10 +61,10 @@ export class BoookingView {
         document.getElementById("status").value = booking.status;
     }
 
-    showUserDetail(bookings) {
+    showUserDetail(booking) {
         let body = document.getElementById('tbody');
         // console.log(bookings[0]);
-        let booking = bookings[0];
+        // let booking = bookings[0];
         document.getElementById("idNew").value = booking.id;
         document.getElementById("userIdNew").value = booking.userId;
         document.getElementById("flightIdNew").value = booking.flightId;

@@ -15,28 +15,24 @@ export class UserRepository {
 
         const response = await fetch(url, requestOptions);
         if (response.ok) {
-            let data = response.json();
-            console.log(data);
-            return data;
+            return response.json();
         } else {
             throw new Error(`Login request failed with status ${response.status}`);
         }
     }
 
-    async requestRegister(username, email, password, firstName, lastName, dob, address) {
+    async requestRegister(userData) {
         const url = `${URL}/register`;
 
         const requestOptions = {
             method: "POST",
             headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({username, email, password, firstName, lastName, dob, address}),
+            body: JSON.stringify(userData),
         };
 
         const response = await fetch(url, requestOptions);
         if (response.ok) {
-            let data = response.json();
-            console.log(data);
-            return data;
+            return response.json();
         } else {
             throw new Error(`Register request failed with status ${response.status}`);
         }
@@ -54,15 +50,13 @@ export class UserRepository {
 
         const response = await fetch(url, requestOptions);
         if (response.ok) {
-            let data = response.json();
-            console.log(data);
-            return data;
+            return response.json();
         } else {
             throw new Error(`User info request failed with status ${response.status}`);
         }
     }
 
-    async requestUpdateUserInfo(username, email, password, firstName, lastName, dob, address) {
+    async requestUpdateUserInfo(userData) {
         const url = `${URL}/users`;
 
         const requestOptions = {
@@ -71,14 +65,12 @@ export class UserRepository {
                 "Content-Type": "application/json",
                 "Authorization": Storage.retrieveToken()
             },
-            body: JSON.stringify({username, email, password, firstName, lastName, dob, address}),
+            body: JSON.stringify(userData),
         };
 
         const response = await fetch(url, requestOptions);
         if (response.ok) {
-            let data = response.json();
-            console.log(data);
-            return data;
+            return response.json();
         } else {
             throw new Error(`User info request failed with status ${response.status}`);
         }

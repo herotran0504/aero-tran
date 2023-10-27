@@ -17,7 +17,6 @@ export class LoginController {
             Storage.storeToken(result.token);
             Navigator.navigateToHomePage();
         } catch (error) {
-            console.log(error);
             this.view.showLoginError();
         }
     }

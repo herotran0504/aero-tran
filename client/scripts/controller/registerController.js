@@ -11,7 +11,8 @@ export class RegisterController {
 
     async register(username, email, password, firstName, lastName, dob, address) {
         try {
-            await this.repository.requestRegister(username, email, password, firstName, lastName, dob, address);
+            const userData = {username, email, password, firstName, lastName, dob, address};
+            await this.repository.requestRegister(userData);
             this.view.showRegisterSuccess();
             Navigator.navigateToLoginPage();
         } catch (error) {

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html" charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../styles/styles.css">
+	<title>Home Page</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: 'PT Sans', sans-serif;
+			overflow-x: hidden;
+		}
+
+		img {
+			position: absolute;
+			display: block;
+			margin: 0;
+			border: none;
+			padding: 0;
+		}
+
+		div {
+			position: absolute;
+		}
+
+		#content-container {
+			display: block;
+			position: relative;
+			width: 100%;
+			height: 1080px;
+			overflow: hidden;
+		}
+
+		#content-container-foreground {
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 2048px;
+			background: #2E2A39;
+		}
+
+		#slogan {
+			top: 210px;
+			left: 120px;
+			width: 50%;
+			height: 104px;
+			overflow: hidden;
+			font-size: 80px;
+			font-weight: bold;
+			text-align: left;
+			color: #F5F5F5;
+		}
+
+		#description {
+			top: 348px;
+			left: 120px;
+			width: 50%;
+			height: auto;
+			overflow: hidden;
+			font-size: 20px;
+			text-align: left;
+			line-height: 26px;
+			color: #F5F5F5;
+		}
+
+		#nav_bar {
+			padding-left: 120px;
+			padding-right: 120px;
+			width: 100%;
+			height: 88px;
+			background: rgba(0, 0, 0, 0.76);
+			opacity: 0.75
+		}
+
+		#logo {
+			top: 24px;
+			width: auto;
+			height: 40px;
+		}
+
+		#nav_items {
+			top: 36px;
+			left: 1244px;
+			width: 100%;
+			height: 18px;
+		}
+
+		#aero_tran {
+			top: 0;
+			overflow: hidden;
+			font-size: 24px;
+			font-weight: bold;
+			text-align: left;
+			line-height: 40px;
+			color: #fff;
+		}
+
+		#about {
+			top: 0;
+			left: 0;
+			width: 69px;
+			height: 23px;
+			overflow: hidden;
+			font-size: 18px;
+			font-weight: bold;
+			text-align: left;
+			color: #F5F5F5;
+		}
+
+		#explore {
+			top: 0;
+			left: 94px;
+			width: 81px;
+			height: 23px;
+			overflow: hidden;
+			font-size: 18px;
+			font-weight: bold;
+			text-align: left;
+			color: #F5F5F5;
+		}
+
+		#bookings {
+			top: 0;
+			left: 200px;
+			width: 96px;
+			height: 23px;
+			overflow: hidden;
+			font-size: 18px;
+			font-weight: bold;
+			text-align: left;
+			color: #F5F5F5;
+		}
+
+		#find_ticket {
+			top: 0;
+			left: 321px;
+			width: 112px;
+			height: 23px;
+			overflow: hidden;
+			font-size: 18px;
+			font-weight: bold;
+			text-align: left;
+			color: #F5F5F5;
+		}
+
+		#contact_us {
+			top: 0;
+			left: 458px;
+			width: 113px;
+			height: 23px;
+			overflow: hidden;
+			font-size: 18px;
+			font-weight: bold;
+			text-align: left;
+			color: #F5F5F5;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="content-container">
+		<div id="content-container-foreground"></div>
+		<img alt="img" src="../images/background.png" />
+		<div id="description">
+			AeroTran is your premier flight booking system designed to streamline your travel experience. Seamlessly
+			search, book, and manage flights tailored to your preferences. From discovering the perfect destination to
+			ensuring a comfortable and hassle-free journey, AeroTran is your trusted companion in the world of travel.
+			<br><br>
+			With a user-friendly interface, personalized profiles, and a comprehensive flight database, AeroTran
+			simplifies the process of finding, booking, and managing your flights. Enjoy the convenience of quick and
+			secure bookings while exploring an array of travel options.
+			<br><br>
+			Start your journey with AeroTran and elevate the way you travel.
+		</div>
+		<div id="nav_bar">
+			<div id="logo">
+				<div id="aero_tran">AeroTran</div>
+			</div>
+			<div id="nav_items">
+				<div id="about" class="nav-item">About</div>
+				<div id="explore" class="nav-item">Explore</div>
+				<div id="bookings" class="nav-item">Bookings</div>
+				<div id="find_ticket" class="nav-item">Find Ticket</div>
+				<div id="contact_us" class="nav-item">Contact Us</div>
+			</div>
+		</div>
+		<div id="slogan">Book, Fly, Smile - Repeat!</div>
+	</div>
+</body>
+
+</html>

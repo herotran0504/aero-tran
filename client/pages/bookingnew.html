@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Booking Form</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script type="module" src="../scripts/bookingNewScript.js"></script>
 </head>
 <body>
     <div class="container mt-4">
@@ -12,32 +13,32 @@
         <form id="bookingForm">
             <div class="form-group">
                 <label for="id">Booking ID:</label>
-                <input type="text" class="form-control" id="id" name="id" required>
+                <input type="text" class="form-control" id="idNew" name="id" required>
             </div>
             <div class="form-group">
                 <label for="userId">User ID:</label>
-                <input type="text" class="form-control" id="userId" name="userId" required>
+                <input type="text" class="form-control" id="userIdNew" name="userId" required>
             </div>
             <div class="form-group">
                 <label for="flightId">Flight ID:</label>
-                <input type="text" class="form-control" id="flightId" name="flightId" required>
+                <input type="text" class="form-control" id="flightIdNew" name="flightId" required>
             </div>
             <div class="form-group">
                 <label for="BookingDate">Booking Date:</label>
-                <input type="date" class="form-control" id="BookingDate" name="BookingDate" required>
+                <input type="text" class="form-control" id="bookingDateNew" name="BookingDate" required>
             </div>
             <div class="form-group">
                 <label>Passenger Information:</label>
                 <div class="passenger-info">
                     <div class="form-row">
                         <div class="col">
-                            <input type="text" class="form-control" placeholder="First Name" name="passengerFirstName[]" required>
+                            <input type="text" class="form-control" id="firstNameNew" placeholder="First Name" name="passengerFirstName[]" required>
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control" placeholder="Last Name" name="passengerLastName[]" required>
+                            <input type="text" class="form-control" id="lastNameNew" placeholder="Last Name" name="passengerLastName[]" required>
                         </div>
                         <div class="col">
-                            <input type="email" class="form-control" placeholder="Email" name="passengerEmail[]" required>
+                            <input type="email" class="form-control" id="emailNew" placeholder="Email" name="passengerEmail[]" required>
                         </div>
                         <div class="col">
                             <button type="button" class="btn btn-danger remove-passenger">Remove</button>
@@ -48,13 +49,13 @@
             </div>
             <div class="form-group">
                 <label for="status">Status:</label>
-                <select class="form-control" id="status" name="status" required>
-                    <option value="Confirmed">Confirmed</option>
-                    <option value="Pending">Pending</option>
-                    <option value="Cancelled">Cancelled</option>
+                <select class="form-control" id="statusNew" name="status" required>
+                    <option value="confirmed">confirmed</option>
+                    <option value="pending">pending</option>
+                    <option value="cancelled">cancelled</option>
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" id="btnAdd" class="btn btn-primary">Confirm Booking</button>
         </form>
     </div>
 

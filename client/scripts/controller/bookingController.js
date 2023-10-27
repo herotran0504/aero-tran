@@ -34,6 +34,17 @@ export class BookingController {
         }
     }
 
+    async getUserInforByLastBooking(id) {
+        try {
+            let result = await this.repository.requestBookingByUserId(id);
+            console.log(result);
+            this.view.showUserDetail(result);
+        } catch (error) {
+            console.log(error);
+            this.view.showError();
+        }
+    }
+
     async getBookings() {
         try {
             let result = await this.repository.requestBookings();

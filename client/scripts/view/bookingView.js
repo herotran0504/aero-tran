@@ -60,6 +60,20 @@ export class BoookingView {
         document.getElementById("emailForUpdate").value = booking.passengerInfo.email;
         document.getElementById("status").value = booking.status;
     }
+
+    showUserDetail(bookings) {
+        let body = document.getElementById('tbody');
+        // console.log(bookings[0]);
+        let booking = bookings[0];
+        document.getElementById("idNew").value = booking.id;
+        document.getElementById("userIdNew").value = booking.userId;
+        document.getElementById("flightIdNew").value = booking.flightId;
+        document.getElementById("bookingDateNew").value = booking.bookingDate;
+        document.getElementById("firstNameNew").value = booking.passengerInfo.firstName;
+        document.getElementById("lastNameNew").value = booking.passengerInfo.lastName;
+        document.getElementById("emailNew").value = booking.passengerInfo.email;
+        document.getElementById("statusNew").value = booking.status;
+    }
    
     showError() {
         alert("Fetch user info error, we're notified")

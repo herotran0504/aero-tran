@@ -4,7 +4,6 @@ const cors = require("cors");
 const verifyToken = require("./controller/jwtMiddleware");
 
 const usersRouter = require("./router/usersRouter");
-const userRouter = require("./router/userRouter");
 const loginRouter = require("./router/loginRouter");
 const registerRouter = require("./router/registerRouter");
 
@@ -21,15 +20,14 @@ app.use(express.json());
 // guest access
 app.post('/login', loginRouter);
 app.post('/register', registerRouter);
-app.use('/bookings', bookingRouter);
 app.use('/flights', flightRouter);
 
 // user access
 app.use('/', verifyToken);
-app.get('/users', usersRouter);
-app.get('/user', userRouter);
+app.use('/users', usersRouter);
+app.use('/bookings', bookingRouter);
 
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
     res.status(500).json({message: "Something went wrong: " + err.message});
 })
 

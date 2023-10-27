@@ -22,4 +22,13 @@ export class UserInfoController {
         return new UserInfoController(new UserInfoView(), new UserRepository());
     }
 
+    async update(username, email, password, firstName, lastName, dob, address) {
+        try {
+            await this.repository.requestUpdateUserInfo(username, email, password, firstName, lastName, dob, address);
+            this.view.showUpdateInfoSuccess();
+        } catch (error) {
+            console.log(error);
+            this.view.showError();
+        }
+    }
 }

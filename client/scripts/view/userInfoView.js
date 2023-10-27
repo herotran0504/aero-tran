@@ -1,16 +1,21 @@
 export class UserInfoView {
 
     showUserInfo(user) {
-        document.getElementById("userName").value = `${user.username}`;
-        document.getElementById("email").value = `${user.email}`;
-        document.getElementById("firstName").value = `${user.firstName}`;
-        document.getElementById("lastName").value = `${user.lastName}`;
-        document.getElementById("dob").value = `${user.dob}`;
-        document.getElementById("address").value = `${user.address}`;
+        $('#userId').val(`${user.userId}`);
+        $('#userName').val(`${user.username}`);
+        $('#email').val(`${user.email}`);
+        $('#firstName').val(`${user.firstName}`);
+        $('#lastName').val(`${user.lastName}`);
+        $('#dob').val(`${user.dob}`);
+        $('#address').val(`${user.address}`);
+    }
+
+    showUpdateInfoSuccess() {
+        alert("Update successfully!");
     }
 
     showError() {
-        alert("Something went wrong");
+        alert("Something went wrong!");
     }
 
 }

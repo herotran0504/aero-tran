@@ -8,7 +8,7 @@ window.onload = async function () {
 }
 
 async function addEventListeners() {
-    document.getElementById("logout").addEventListener("click", () => {
+    $("#logout").on("click", () => {
         controller.handleLogout();
     });
 }

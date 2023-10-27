@@ -6,10 +6,6 @@ class UserRepository {
         this.userDao = new UserDao();
     }
 
-    async getAllUsers() {
-        return await this.userDao.getAllUsers();
-    }
-
     async registerUser(userData) {
         return await this.userDao.createUser(userData);
     }
@@ -21,6 +17,11 @@ class UserRepository {
     async findUserByEmail(email) {
         return await this.userDao.getUserByEmail(email);
     }
+
+    async updateUserInfo(userData) {
+        return await this.userDao.updateUser(userData);
+    }
+
 }
 
 module.exports = UserRepository

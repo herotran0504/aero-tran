@@ -1,29 +1,29 @@
-import {LoginRepository} from "../repository/loginRepository.js"
+import {UserRepository} from "../repository/userRepository.js"
 import {LoginView} from "../view/loginView.js"
 import {Navigator} from "../navigator/navigator.js"
 import {Storage} from "../storage/storage.js";
 
 export class LoginController {
 
-    constructor(loginView, loginRepository) {
-        this.loginView = loginView;
-        this.loginRepository = loginRepository;
+    constructor(view, repository) {
+        this.view = view;
+        this.repository = repository;
     }
 
     async login(email, password) {
         try {
-            let result = await this.loginRepository.requestLogin(email, password);
-            this.loginView.showLoginSuccess(result.token);
+            let result = await this.repository.requestLogin(email, password);
+            this.view.showLoginSuccess(result.token);
             Storage.storeToken(result.token);
             Navigator.navigateToHomePage();
         } catch (error) {
             console.log(error);
-            this.loginView.showLoginError();
+            this.view.showLoginError();
         }
     }
 
     static create() {
-        return new LoginController(new LoginView(), new LoginRepository());
+        return new LoginController(new LoginView(), new UserRepository());
     }
 
 }

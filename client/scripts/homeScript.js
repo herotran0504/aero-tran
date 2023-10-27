@@ -1,14 +1,14 @@
 import {HomeController} from "./controller/homeController.js";
 
-const homeController = HomeController.create();
+const controller = HomeController.create();
 
 window.onload = async function () {
-    homeController.checkUserState();
+    controller.checkUserState();
     await addEventListeners()
 }
 
 async function addEventListeners() {
     document.getElementById("logout").addEventListener("click", () => {
-        homeController.handleLogout();
+        controller.handleLogout();
     });
 }

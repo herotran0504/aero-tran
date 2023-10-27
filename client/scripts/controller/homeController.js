@@ -4,15 +4,15 @@ import {Navigator} from "../navigator/navigator.js";
 
 export class HomeController {
 
-    constructor(homeView) {
-        this.homeView = homeView;
+    constructor(view) {
+        this.view = view;
     }
 
     checkUserState() {
         if (Storage.hasValidToken()) {
-            this.homeView.showUserControls();
+            this.view.showUserControls();
         } else {
-            this.homeView.showGuestControls();
+            this.view.showGuestControls();
         }
     }
 

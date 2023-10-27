@@ -7,5 +7,6 @@ const router = express.Router();
 router.get('/', flightController.getAllFlights);
 router.get('/search', flightController.findFlights);
 router.get('/:id', flightController.getFlightById);
+router.put('/:id', flightController.updateAvailableSeatsById);
 
 module.exports = router;

@@ -17,6 +17,10 @@ class FlightRepository {
         return this.flightDao.findFlights(query);
     }
 
+    async updateAvailableSeatsById(id, body) {
+        return this.flightDao.updateAvailableSeatsById(id, body);
+    }
+
 }
 
 module.exports = FlightRepository

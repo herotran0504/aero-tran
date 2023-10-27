@@ -13,7 +13,8 @@ export class FlightController {
 
     async searchFlight(fromCity, toCity, departure, arival) {
         try {
-            let result = this.flightRepository.searchFlight(fromCity, toCity, departure, arival);
+            let result = await this.flightRepository.searchFlight(fromCity, toCity, departure, arival);
+            this.flightView.showFlightSearchSuccess(result);
         } catch (error) {
             console.log(error);
             this.flightView.showFlightSearchFail();

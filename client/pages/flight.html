@@ -54,53 +54,44 @@
             </form>
         </div>
         <!-- Flight list -->
-        <div id="flightList">
-            <div>Flight listing:</div>
+        <div id="flightList" class="flightList">
+            <!-- <div>Flight listing:</div> -->
             <div>
-                <div class="table-wrapper-scroll-y my-custom-scrollbar" style="margin-top: 1em;" id="divFlightsList" style="font-size: 1em">
+                <div class="table-wrapper-scroll-y my-custom-scrollbar" style="margin-top: 1em;" id="divFlightsList"
+                    style="font-size: 1em">
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th scope="col">Patient ID No</th>
-                                <th scope="col">First Name</th>
-                                <th scope="col">Middle Initial(s)</th>
-                                <th scope="col">Last Name</th>
-                                <th scope="col">Date of birth</th>
-                                <th scope="col">Department</th>
-                                <th scope="col">Out-patient?</th>
+                                <th scope="col">Flight Number</th>
+                                <th scope="col">From</th>
+                                <th scope="col">To</th>
+                                <th scope="col">Economy price</th>
+                                <th scope="col">Business price</th>
+                                <th scope="col">Details</th>
                             </tr>
                         </thead>
                         <tbody id="tbodyFlightsList" name="tbodyFlightsList">
-                            <tr>
-                                <td scope="col">EP-001-000001</td>
-                                <td scope="col">Ana</td>
-                                <td scope="col">J</td>
-                                <td scope="col">Smith</td>
-                                <td scope="col">1945-01-05</td>
-                                <td scope="col">Ear, Nose and Throat</td>
-                                <td scope="col">No</td>
-                            </tr>
-                            <tr>
-                                <td scope="col">EP-001-000002</td>
-                                <td scope="col">Bob</td>
-                                <td scope="col">K</td>
-                                <td scope="col">Jones</td>
-                                <td scope="col">1985-05-04</td>
-                                <td scope="col">Cardiology</td>
-                                <td scope="col">Yes</td>
-                            </tr>
-                            <tr>
-                                <td scope="col">EP-001-000003</td>
-                                <td scope="col">Calos</td>
-                                <td scope="col">A</td>
-                                <td scope="col">Hernandez</td>
-                                <td scope="col">1957-03-13</td>
-                                <td scope="col">Cardiology</td>
-                                <td scope="col">Yes</td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>
+            </div>
+        </div>
+        <!-- Flight details -->
+        <hr>
+        <div id="flightDetails" class="flightDetails">
+            <h5 style="font-weight: bold;">Flight detail: </h5>
+            <div class="table-wrapper-scroll-y my-custom-scrollbar" style="margin-top: 1em;" id="divFlightDetails"
+                style="font-size: 1em">
+                <table class="table table-striped">
+                    <thead>
+                        <!-- <tr>
+                            <th scope="col">Flight Details</th>
+                        </tr> -->
+                    </thead>
+                    <tbody id="tbodyFlightsDetails" name="tbodyFlightsDetails">
+
+                    </tbody>
+                </table>
             </div>
         </div>
     </main>

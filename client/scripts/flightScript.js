@@ -17,7 +17,14 @@ async function addEventListeners() {
         let toCity = doc.getElementById('flightTo').value;
         let fromDay = doc.getElementById('fromDay').value
         let toDay = doc.getElementById('toDay').value
-        controller.searchFlight(fromCity, toCity, formatInputDate(fromDay), formatInputDate(toDay)).then(() => {
+        //testing data
+        fromCity = 'IowaCity';
+        toCity = 'NewYork';
+        fromDay = '11/17/2023';
+        toDay = '11/17/2023';
+        //
+        //controller.searchFlight(fromCity, toCity, formatInputDate(fromDay), formatInputDate(toDay)).then(() => {
+        controller.searchFlight(fromCity, toCity, fromDay, toDay).then(() => {
             searchBtn.disabled = false;
             searchForm.reset();
         });

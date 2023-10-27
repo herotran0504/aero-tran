@@ -18,7 +18,7 @@ export class HomeController {
 
     handleLogout() {
         Storage.clearToken();
-        Navigator.navigateToLoginPage()
+        Navigator.navigateToHomePage()
     }
 
     static create() {

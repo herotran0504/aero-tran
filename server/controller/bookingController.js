@@ -14,13 +14,14 @@ class BookingController {
 
     //get booking by user id
     async getBookingByUserId(req, res, next) {
-        res.status(200).json(await (new BookingRepository()).getBookingByUserId(parseInt(req.params.id)));
+        res.status(200).json(await (new BookingRepository()).getBookingByUserId(req.userId));
     }
 
     //add new booking
     async addBooking(req, res, next) {
-        console.log(req.body);
-        res.status(200).json(await (new BookingRepository()).addBooking(req.body));
+        let body = req.body;
+        body.userId = (req.userId);
+        res.status(200).json(await (new BookingRepository()).addBooking(body));
     }
 
     //delete booking by id
@@ -32,7 +33,6 @@ class BookingController {
         console.log(req.body);
         res.status(200).json(await (new BookingRepository()).updateBookingById(parseInt(req.params.id),req.body));
     }
-
 
 }
 

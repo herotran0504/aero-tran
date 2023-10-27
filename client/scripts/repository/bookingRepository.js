@@ -41,6 +41,25 @@ export class BookingRepository {
             throw new Error(`Bookings request failed with status ${response.status}`);
         }
     }
+    // get booking by user id
+    async requestBookingByUserId(id) {
+        const url = `${URL}/bookings/user/${id}`;
+
+        const requestOptions = {
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": Storage.retrieveToken()
+            },
+        };
+
+        const response = await fetch(url, requestOptions);
+        if (response.ok) {
+            let data = response.json();
+            return data;
+        } else {
+            throw new Error(`Bookings request failed with status ${response.status}`);
+        }
+    }
 
     // delete booking by id
     async deleteBookingById(id) {

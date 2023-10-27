@@ -1,11 +1,26 @@
 import { BookingRepository } from "../repository/bookingRepository.js";
 import { BoookingView } from "../view/bookingView.js";
+import {UserRepository} from "../repository/userRepository.js";
 
 export class BookingController {
 
-    constructor(view, repository) {
+    constructor(view, repository, userRepository) {
         this.view = view;
         this.repository = repository;
+        this.userRepository = userRepository
+    }
+
+        // get booking by user id
+    async getBookingByUserId() {
+        try {
+            let userInfo = await this.userRepository.requestUserInfo();
+            let result = await this.repository.requestBookingByUserId();
+            // console.log(result);
+            this.view.showBookings(result);
+        } catch (error) {
+            console.log(error);
+            this.view.showError();
+        }
     }
 
     async getBookings() {
@@ -23,12 +38,13 @@ export class BookingController {
         try {
             let result = await this.repository.requestBookingById(id);
             console.log(result);
-            this.view.showBooking(result);
+            this.view.showBookings(result);
         } catch (error) {
             console.log(error);
             this.view.showError();
         }
     }
+
 
     // delete booking by id
     async deleteBookingById(id) {
@@ -65,7 +81,7 @@ export class BookingController {
     }
 
     static create() {
-        return new BookingController(new BoookingView(), new BookingRepository());
+        return new BookingController(new BoookingView(), new BookingRepository(), new UserRepository());
     }
 
 }

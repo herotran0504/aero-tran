@@ -16,6 +16,11 @@ class BookingRepository {
         return this.BookingDao.getBookingById(id);
     }
 
+    // get booking by user id
+    async getBookingByUserId(id) {
+        return this.BookingDao.getBookingByUserId(id);
+    }
+
     // add new booking
     async addBooking(booking) {
         return this.BookingDao.addBooking(booking);
@@ -27,10 +32,9 @@ class BookingRepository {
     }
 
     // update booking by id
-    // async updateBookingById(id,booking) {
-    //     return this.BookingDao.updateBookingById(id,booking);
-    // }
-
+    async updateBookingById(id,booking) {
+        return this.BookingDao.updateBookingById(id,booking);
+    }
 }
 
 module.exports = BookingRepository

@@ -20,8 +20,18 @@ class BookingDao extends BaseDao {
         try {
             await this.connect();
             const bookingsCollection = this.db.collection('bookings');
-            id = parseInt(id);
             return await bookingsCollection.find({id:id}).toArray();
+        } finally {
+            await this.disconnect();
+        }
+    }
+
+    // get booking by user id
+    async getBookingByUserId(id) {
+        try {
+            await this.connect();
+            const bookingsCollection = this.db.collection('bookings');
+            return await bookingsCollection.find({userId:id}).toArray();
         } finally {
             await this.disconnect();
         }
@@ -32,6 +42,8 @@ class BookingDao extends BaseDao {
         try {
             await this.connect();
             const bookingsCollection = this.db.collection('bookings');
+            const lastId = await bookingsCollection.find().sort({id:-1}).limit(1).next();
+            booking.id = lastId.id+1;
             return await bookingsCollection.insertOne(booking);
         } finally {
             await this.disconnect();
@@ -43,7 +55,6 @@ class BookingDao extends BaseDao {
         try {
             await this.connect();
             const bookingsCollection = this.db.collection('bookings');
-            id = parseInt(id);
             return await bookingsCollection.deleteOne({id:id});
         } finally {
             await this.disconnect();
@@ -55,12 +66,12 @@ class BookingDao extends BaseDao {
         try {
             await this.connect();
             const bookingsCollection = this.db.collection('bookings');
-            id = parseInt(id);
             return await bookingsCollection.updateOne({id:id},{$set:booking});
         } finally {
             await this.disconnect();
         }
     }
+
 }
 
 module.exports = BookingDao;

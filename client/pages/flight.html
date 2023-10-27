@@ -52,6 +52,16 @@
                     <button type="submit" class="btn btn-primary" id="btnsearchFlight">Search</button>
                 </div>
             </form>
+            <form class="col" id="filterForm">
+                <div>
+                    <label for="filterStartPrice">Economy Price from:</label>
+                    <input class="w-auto" type="text" id="filterStartPrice" pattern="^[1-9][0-9]+$" required>
+                    <label for="filterEndPrice">to:</label>
+                    <input class="w-auto" type="text" id="filterEndPrice" pattern="^[1-9][0-9]+$" required>
+                    <button type="submit" class="btn btn-outline-secondary btn-sm" id="btnApply">Apply</button>
+                </div>
+            </form>
+            
         </div>
         <!-- Flight list -->
         <div id="flightList" class="flightList">

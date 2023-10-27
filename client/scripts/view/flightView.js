@@ -188,7 +188,7 @@ export class FlightView {
         info.appendChild(fromtd);
         info.appendChild(durationtd);
         info.appendChild(totd);
-        console.log(info);
+        // console.log(info);
         return info;
     }
 

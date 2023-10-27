@@ -9,7 +9,7 @@ export class FlightRepository {
         const response = await fetch(url, requestOptions);
         if(response.ok) {
           const  result = await response.json();
-          console.log(result);
+        //   console.log(result);
           return result
         } else {
             throw new Error(`Search flight failed with status ${response.status}`);

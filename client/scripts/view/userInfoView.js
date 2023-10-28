@@ -1,4 +1,6 @@
-export class UserInfoView {
+import {BaseView} from "./baseView.js";
+
+export class UserInfoView extends BaseView {
 
     showUserInfo(user) {
         $('#userId').val(`${user.userId}`);

@@ -23,4 +23,7 @@ async function addEventListeners() {
             $("#submitBtn").prop('disabled', false);
         });
     });
+    $("#logout").on("click", () => {
+        controller.handleLogout();
+    });
 }

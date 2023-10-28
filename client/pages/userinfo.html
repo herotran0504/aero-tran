@@ -19,29 +19,32 @@
         .row {
             margin-top: 16px;
         }
-
         .btn-primary {
             min-width: 50%;
-        }
-        a {
-            text-decoration: underline;
-            color: #0C6EFD;
         }
     </style>
 </head>
 
 <body>
-
+    <div class="navbar">
+        <div id="logo">
+            <div id="aero_tran"><a href="index.html">AeroTran</a></div>
+        </div>
+        <div id="nav_items">
+            <div id="flights" class="nav-item"><a href="flight.html">Flights</a></div>
+            <div id="bookings" class="nav-item"><a href="bookingdetails.html">My Bookings</a></div>
+            <div id="about_us" class="nav-item"><a href="#">About Us</a></div>
+            <div id="contact_us" class="nav-item"><a href="#">Contact Us</a></div>
+            <div id="login" class="nav-item" style="display: none"><a href="login.html">Login</a></div>
+            <div id="userInfo" class="nav-item"><a class="nav-item_selected" href="#">My Account</a></div>
+            <div id="logout" class="nav-item"><a href="#">Logout</a></div>
+        </div>
+    </div>
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <h1 class="text-center">My Account</h1>
                 <form id="form">
-                    <div class="form-group row">
-                        <div class="col-sm-8" style="font-size: 18px; font-weight: bold">
-                            <a href="bookingdetails.html">My Bookings</a>
-                        </div>
-                    </div>
                     <div class="form-group row">
                         <label for="userId" class="col-sm-3 col-form-label">User Id:</label>
                         <div class="col-sm-8">

@@ -1,10 +1,11 @@
 import {HomeView} from "../view/homeView.js";
 import {Storage} from "../storage/storage.js";
-import {Navigator} from "../navigator/navigator.js";
+import {BaseController} from "./baseController.js";
 
-export class HomeController {
+export class HomeController extends BaseController {
 
     constructor(view) {
+        super();
         this.view = view;
     }
 
@@ -14,11 +15,6 @@ export class HomeController {
         } else {
             this.view.showGuestControls();
         }
-    }
-
-    handleLogout() {
-        Storage.clearToken();
-        Navigator.navigateToHomePage()
     }
 
     static create() {

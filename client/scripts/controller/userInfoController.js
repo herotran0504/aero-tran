@@ -1,9 +1,11 @@
 import {UserInfoView} from "../view/UserInfoView.js";
 import {UserRepository} from "../repository/userRepository.js";
+import {BaseController} from "./baseController.js";
 
-export class UserInfoController {
+export class UserInfoController extends BaseController {
 
     constructor(view, repository) {
+        super();
         this.view = view;
         this.repository = repository;
     }

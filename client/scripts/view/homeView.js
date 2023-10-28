@@ -1,17 +1,5 @@
-export class HomeView {
+import {BaseView} from "./baseView.js";
 
-    showUserControls() {
-        $('#login').hide();
-        $('#userInfo').show();
-        $('#logout').show();
-        $('#bookings').show();
-    }
-
-    showGuestControls() {
-        $('#login').show();
-        $('#userInfo').hide();
-        $('#logout').hide();
-        $('#bookings').hide();
-    }
+export class HomeView extends BaseView {
 
 }

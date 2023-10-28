@@ -1,10 +1,13 @@
 import { FlightController } from "./controller/flightController.js";
+import { HomeController } from "./controller/homeController.js";
 const controller = FlightController.create();
+const homeController = HomeController.create();
 
 window.onload = async function () {
     addSearchEvent();
     addApplyEvent();
     loadFlight();
+    homeController.checkUserState();
 }
 const doc = document;
 

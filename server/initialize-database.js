@@ -1,5 +1,6 @@
 const bcrypt = require("bcrypt");
 const Const = require("./util/Const");
+const fs = require('fs');
 
 // FLIGHTS
 const initialData = {
@@ -30,63 +31,74 @@ const americanCities = [
     "Phoenix",
     "Philadelphia",
     "San Antonio",
-    "San Diego",
-    "Dallas",
-    "San Jose",
-    "Austin",
-    "Jacksonville",
-    "San Francisco",
-    "Columbus",
-    "Fort Worth",
-    "Indianapolis",
-    "Seattle",
-    "Denver",
-    "Washington",
-    "Boston",
-    "Nashville",
-    "Baltimore",
-    "Oklahoma City",
-    "Louisville",
-    "Portland",
-    "Las Vegas",
-    "Milwaukee",
-    "Albuquerque",
-    "Tucson",
-    "Fresno",
-    "Sacramento",
-    "Kansas City",
-    "Long Beach",
-    "Mesa",
-    "Atlanta",
-    "Colorado Springs",
-    "Virginia Beach",
-    "Raleigh",
-    "Omaha",
-    "Miami",
-    "Oakland",
-    "Minneapolis",
-    "Tulsa",
-    "Wichita",
-    "New Orleans",
+    // "San Diego",
+    // "Dallas",
+    // "San Jose",
+    // "Austin",
+    // "Jacksonville",
+    // "San Francisco",
+    // "Columbus",
+    // "Fort Worth",
+    // "Indianapolis",
+    // "Seattle",
+    // "Denver",
+    // "Washington",
+    // "Boston",
+    // "Nashville",
+    // "Baltimore",
+    // "Oklahoma City",
+    // "Louisville",
+    // "Portland",
+    // "Las Vegas",
+    // "Milwaukee",
+    // "Albuquerque",
+    // "Tucson",
+    // "Fresno",
+    // "Sacramento",
+    // "Kansas City",
+    // "Long Beach",
+    // "Mesa",
+    // "Atlanta",
+    // "Colorado Springs",
+    // "Virginia Beach",
+    // "Raleigh",
+    // "Omaha",
+    // "Miami",
+    // "Oakland",
+    // "Minneapolis",
+    // "Tulsa",
+    // "Wichita",
+    // "New Orleans",
 ];
-
-const flights = [];
-
-for (let i = 0; i < 30; i++) {
-    const flight = {...initialData};
-    flight.id = (parseInt(initialData.id) + i + 1).toString();
-    flight.flightNumber = `A350-${i + 1}`;
-    flight.departureCity = americanCities[Math.floor(Math.random() * americanCities.length)];
-    flight.arrivalCity = americanCities[Math.floor(Math.random() * americanCities.length)];
-    flight.departureDate = "11/" + (i + 1) + "/2023";
-    flight.arrivalDate = "11/" + (i + 1) + "/2023";
-    flight.departureTime = `0${i + 1}:0${i + 1}:0${i + 1}`;
-    flight.arrivalTime = `1${i + 1}:1${i + 1}:1${i + 1}`;
-    flight.businessPrice = (parseInt(initialData.businessPrice) + (i + 1) * 100).toString();
-    flight.ecoPrice = (parseInt(initialData.ecoPrice) + (i + 1) * 50).toString();
-    flight.isDomestic = ((i + 1) % 2).toString();
-    flights.push(flight);
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
 }
+
+const min = 1; // Minimum value
+const max = 100; // Maximum value (exclusive)
+
+// const randomNum = getRandomInt(min, max);
+const flights = [];
+async function generateFlights() {
+    for (let i = 0; i < 1000; i++) {
+        const flight = { ...initialData };
+        flight.id = (parseInt(initialData.id) + i + 1).toString();
+        flight.flightNumber = `A350-${i + 1}`;
+        flight.departureCity = americanCities[Math.floor(Math.random() * americanCities.length)];
+        flight.arrivalCity = americanCities[Math.floor(Math.random() * americanCities.length)];
+        flight.departureDate = "11/" + getRandomInt(9, 10) + "/2023";
+        flight.arrivalDate = "11/" + getRandomInt(10, 11) + "/2023";
+        flight.departureTime = `${getRandomInt(0, 12)}:${getRandomInt(0, 60)}:${getRandomInt(0, 60)}`;
+        flight.arrivalTime = `${getRandomInt(0, 12)}:${getRandomInt(0, 60)}:${getRandomInt(0, 60)}`;
+        flight.businessPrice = (parseInt(initialData.businessPrice) + (i + 1) * 100).toString();
+        flight.ecoPrice = (parseInt(initialData.ecoPrice) + (i + 1) * 50).toString();
+        flight.isDomestic = ((i + 1) % 2).toString();
+        flights.push(flight);
+    }
+}
+
 
 // console.log(flights);
 
@@ -108,7 +120,7 @@ const names = ["John Doe", "Jane Smith", "Michael Johnson", "Emily Williams", "C
 async function generateUsers() {
 
     for (let i = 0; i < 20; i++) {
-        const newUser = {...initialUserData};
+        const newUser = { ...initialUserData };
         newUser.id = initialUserData.id + i + 1;
         newUser.username = `user${newUser.id}`;
         newUser.password = await bcrypt.hash('123456', Const.CRYPT_SALT);
@@ -129,4 +141,17 @@ async function generateUsers() {
     }
 }
 
-generateUsers().then(()=>console.log(arrayOfUsers));
+// generateUsers().then(() => console.log(arrayOfUsers));
+generateFlights().then(() => console.log(flights));
+// generateFlights().then(() => {
+//     const filePath = 'flight.json';
+
+//     // Write the content to the file
+//     fs.writeFile(filePath, flights.join('\n'), (err) => {
+//         if (err) {
+//             console.error('An error occurred:', err);
+//         } else {
+//             console.log('File has been written successfully.');
+//         }
+//     });
+// });

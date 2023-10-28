@@ -3,6 +3,9 @@ export class FlightView {
     showFlightSearchSuccess(result, onBookCallback) {
         const doc = document;
         const tBody = doc.getElementById('tbodyFlightsList');
+        while (tBody.firstChild) {
+            tBody.removeChild(tBody.firstChild);
+        }
         const theadFlightsList = doc.getElementById('theadFlightsList');
         theadFlightsList.style.display = 'table-header-group';
         for (const flight of result) {

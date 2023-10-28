@@ -52,12 +52,13 @@ async function addApplyEvent() {
         // console.log(childNodes);
         childNodes.forEach(node => {
             if(node.tagName == 'TR') {
-                node.classList.remove("d-none");
+                node.classList.remove('d-none');
+                console.log(node);
                 let childs = node.children;
                 let ecoPrice = childs[3].children[0].children[1].textContent.substring(1);
-                // console.log(ecoPrice);
+                console.log(ecoPrice);
                 if(ecoPrice < startPrice || ecoPrice > endPrice) {
-                    node.classList.add("d-none")
+                    node.classList.add('d-none');
                 }
             }
         });

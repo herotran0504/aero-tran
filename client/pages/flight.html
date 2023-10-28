@@ -13,6 +13,20 @@
             text-decoration: none;
             color: #3309ec;
         }
+        .col-12{
+            padding: 10px;
+        }
+        .search-container {
+            padding-left: 40px;
+        }
+        .flightList-container{
+            padding-left: 26px;
+            padding-right: 26px;
+        }
+        .flightDetails-container{
+            padding-left: 26px;
+            padding-right: 26px;
+        }
     </style>
     <script type="module" src="../scripts/flightScript.js"></script>
 </head>
@@ -27,8 +41,7 @@
                 </div>
                 <div id="nav_items">
                     <div id="flights" class="nav-item"><a href="flight.html">Flights</a></div>
-                    <div id="bookings" class="nav-item" style="display: none"><a href="bookingdetails.html">My
-                            Bookings</a></div>
+                    <div id="bookings" class="nav-item" style="display: none"><a href="bookingdetails.html">My Bookings</a></div>
                     <div id="about_us" class="nav-item"><a href="#">About Us</a></div>
                     <div id="contact_us" class="nav-item"><a href="#">Contact Us</a></div>
                     <div id="login" class="nav-item" style="display: none"><a href="login.html">Login</a></div>
@@ -41,7 +54,7 @@
     </header>
     <!-- Main -->
     <main>
-        <div id="flight">
+        <div class="search-container">
             <!-- <div>Flight search...</div> -->
             <form class="row row-cols-lg-auto g-3 align-items-center" id="searchFlight">
                 <div class="col-12">
@@ -79,13 +92,13 @@
 
         </div>
         <!-- Flight list -->
-        <div id="flightList" class="flightList">
+        <div id="flightList" class="flightList-container">
             <!-- <div>Flight listing:</div> -->
             <div>
                 <div class="table-wrapper-scroll-y my-custom-scrollbar" style="margin-top: 1em;" id="divFlightsList"
                     style="font-size: 1em">
                     <table class="table table-striped">
-                        <thead>
+                        <thead id="theadFlightsList" style="display: none">
                             <tr>
                                 <th scope="col">Flight Number</th>
                                 <th scope="col">From</th>
@@ -103,7 +116,7 @@
         </div>
         <!-- Flight details -->
         <hr class="border border-primary border-2 opacity-50">
-        <div id="flightDetails" class="flightDetails">
+        <div id="flightDetails" class="flightDetails-container">
             <!-- <h5 style="font-weight: bold;">Flight detail: </h5> -->
             <div class="table-wrapper-scroll-y my-custom-scrollbar" style="margin-top: 1em;" id="divFlightDetails"
                 style="font-size: 1em">

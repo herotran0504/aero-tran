@@ -4,6 +4,8 @@ export class FlightView {
     showFlightSearchSuccess(result) {
         const doc = document;
         const tBoody = doc.getElementById('tbodyFlightsList');
+        const theadFlightsList = doc.getElementById('theadFlightsList');
+        theadFlightsList.style.display = 'table-header-group';
         for (const flight of result) {
             //create a row
             let tr = doc.createElement('tr');

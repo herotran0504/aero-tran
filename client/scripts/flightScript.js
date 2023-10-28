@@ -24,13 +24,12 @@ async function addSearchEvent() {
         let fromDay = doc.getElementById('fromDay').value
         let toDay = doc.getElementById('toDay').value
         //testing data
-        fromCity = 'IowaCity';
-        toCity = 'NewYork';
-        fromDay = '11/17/2023';
-        toDay = '11/17/2023';
-        //
-        // controller.searchFlight(fromCity, toCity, formatInputDate(fromDay), formatInputDate(toDay)).then(() => {
-        controller.searchFlight(fromCity, toCity, fromDay, toDay).then(() => {
+        // fromCity = 'IowaCity';
+        // toCity = 'NewYork';
+        // fromDay = '11/17/2023';
+        // toDay = '11/17/2023';
+        controller.searchFlight(fromCity, toCity, formatInputDate(fromDay), formatInputDate(toDay)).then(() => {
+        // controller.searchFlight(fromCity, toCity, fromDay, toDay).then(() => {
             searchBtn.disabled = false;
             searchForm.reset();
         });

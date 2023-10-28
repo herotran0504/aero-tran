@@ -13,7 +13,6 @@ export class RegisterController {
         try {
             const userData = {username, email, password, firstName, lastName, dob, address};
             await this.repository.requestRegister(userData);
-            this.view.showRegisterSuccess();
             Navigator.navigateToLoginPage();
         } catch (error) {
             this.view.showRegisterError();

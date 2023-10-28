@@ -1917,12 +1917,12 @@ class FlightDao extends BaseDao {
     }
 
     async findFlights(query) {
-        const {departureCity, arrivalCity, arivalDate, departureDate} = query;
+        const {departureCity, arrivalCity, fromDate, toDate} = query;
         return flights.filter(f => {
             return f.departureCity === departureCity &&
                 f.arrivalCity === arrivalCity &&
-                Date.parse(f.arrivalDate) === Date.parse(arivalDate) &&
-                Date.parse(f.departureDate) === Date.parse(departureDate);
+                (new Date(Date.parse(f.departureDate))).getTime() >= (new Date(Date.parse(fromDate))).getTime() &&
+                (new Date(Date.parse(f.departureDate))).getTime() <= (new Date(Date.parse(toDate))).getTime();
         })
     }
 

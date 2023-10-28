@@ -1,11 +1,12 @@
 const URL = "http://localhost:5001";
 export class FlightRepository {
-  async searchFlight(fromCity, toCity, departure, arival) {
-    const url = `${URL}/flights/search?departureCity=${fromCity}&arrivalCity=${toCity}&departureDate=${departure}&arivalDate=${arival}`;
+  async searchFlight(fromCity, toCity, fromDate, toDate) {
+    const url = `${URL}/flights/search?departureCity=${fromCity}&arrivalCity=${toCity}&fromDate=${fromDate}&toDate=${toDate}`;
     const requestOptions = {
       method: "GET",
       headers: { "Content-Type": "application/json" }
     };
+    console.log(url);
     const response = await fetch(url, requestOptions);
     if (response.ok) {
       const result = await response.json();

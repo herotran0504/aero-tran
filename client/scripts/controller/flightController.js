@@ -22,9 +22,9 @@ export class FlightController extends BaseController {
         }
     }
 
-    async searchFlight(fromCity, toCity, departure, arrival) {
+    async searchFlight(fromCity, toCity, fromDate, toDate) {
         try {
-            const result = await this.flightRepository.searchFlight(fromCity, toCity, departure, arrival);
+            const result = await this.flightRepository.searchFlight(fromCity, toCity, fromDate, toDate);
             if (result.length > 0) {
                 this.flightView.showFlightSearchSuccess(result, (url) => {
                     if (Storage.hasValidToken()) {

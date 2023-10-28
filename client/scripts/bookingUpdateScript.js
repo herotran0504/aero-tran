@@ -5,10 +5,8 @@ const controller = BookingController.create();
 window.onload = async function () {
     //get id from url
     const queryString = window.location.search;
-    console.log(queryString);
     const urlParams = new URLSearchParams(queryString);
     let id = urlParams.get('id');
-    console.log(id);
     //get booking by id
     await controller.getBookingById(id);
     await addEventListeners();

@@ -1,4 +1,6 @@
 const BaseDao = require('./baseDao');
+const initBookingId = 204800;
+const bookings = [];
 
 class BookingDao extends BaseDao {
     constructor() {
@@ -6,70 +8,67 @@ class BookingDao extends BaseDao {
     }
 
     async getAllBookings() {
-        try {
-            await this.connect();
-            const bookingsCollection = this.db.collection('bookings');
-            return await bookingsCollection.find({}).toArray();
-        } finally {
-            await this.disconnect();
-        }
+        return bookings;
     }
 
-    // get booking by id
     async getBookingById(id) {
-        try {
-            await this.connect();
-            const bookingsCollection = this.db.collection('bookings');
-            return await bookingsCollection.find({id:id}).toArray();
-        } finally {
-            await this.disconnect();
-        }
+        return bookings.find(b => b.id === id);
     }
 
-    // get booking by user id
-    async getBookingByUserId(id) {
-        try {
-            await this.connect();
-            const bookingsCollection = this.db.collection('bookings');
-            return await bookingsCollection.find({userId:id}).toArray();
-        } finally {
-            await this.disconnect();
-        }
+    async getAllBookingByUserId(userId) {
+        return bookings.filter(b => b.userId === userId);
     }
 
-    // add new booking
+    async getLastBookingByUserId(userId) {
+        let bookingList = bookings.findLast(b => b.userId === userId);
+        if (!bookingList) {
+            return {
+                "id": null,
+                "userId": userId,
+                "flightId": null,
+                "bookingDate": null,
+                "passengerInfo": {"firstName": null, "lastName": null, "email": null},
+                "status": null
+            };
+        }
+        return bookingList;
+    }
+
     async addBooking(booking) {
-        try {
-            await this.connect();
-            const bookingsCollection = this.db.collection('bookings');
-            const lastId = await bookingsCollection.find().sort({id:-1}).limit(1).next();
-            booking.id = lastId.id+1;
-            return await bookingsCollection.insertOne(booking);
-        } finally {
-            await this.disconnect();
+        await console.log(`booking::${booking}`)
+        let lastId;
+        if (bookings.length === 0) {
+            lastId = initBookingId
+        } else {
+            lastId = Math.max(bookings.map(b => parseInt(b.id))) + 1;
         }
+        booking.id = lastId;
+        bookings.push(booking);
+        await console.log(bookings);
+        return booking.id;
     }
 
-    // delete booking by id
     async deleteBookingById(id) {
-        try {
-            await this.connect();
-            const bookingsCollection = this.db.collection('bookings');
-            return await bookingsCollection.deleteOne({id:id});
-        } finally {
-            await this.disconnect();
+        let booking;
+        const index = bookings.findIndex(b => b.id === id);
+        if (index > -1) {
+            booking = bookings[index];
+            bookings.splice(index, 1)
         }
+        await console.log(bookings);
+        return booking;
     }
 
-    // update booking by id
-    async updateBookingById(id,booking) {
-        try {
-            await this.connect();
-            const bookingsCollection = this.db.collection('bookings');
-            return await bookingsCollection.updateOne({id:id},{$set:booking});
-        } finally {
-            await this.disconnect();
+    async updateBookingById(id, booking) {
+        let updateBooking;
+        const index = bookings.findIndex(b => b.id === id);
+        if (index > -1) {
+            updateBooking = bookings[index];
+            updateBooking.status = booking.status;
+            updateBooking.passengerInfo = booking.passengerInfo;
         }
+        await console.log(bookings);
+        return updateBooking;
     }
 
 }

@@ -2,12 +2,12 @@ export class BookingView {
 
     showBookings(bookings) {
         let body = document.getElementById('tbody');
-        let data = bookings;
-        
+        let data = bookings.filter(b => b.id != null);
+
         //show booking data in table
         let html = body.innerHTML;
-        for(let i = 0; i < bookings.length; i++) {
-            html+= ` 
+        for (let i = 0; i < bookings.length; i++) {
+            html += ` 
                     <tr>
                     <td>${data[i].id}</td>
                     <td>${data[i].userId}</td>
@@ -30,13 +30,12 @@ export class BookingView {
                         <button class="btn btn-success btn-block" style="height: 100%" onClick="onUpdate(${data[i].id})">Update</button>
                         <button class="btn btn-danger btn-block" style="height: 100%" onclick="onDelete(${data[i].id})">Delete</button>
                     </td>
-                </tr>`;   
+                </tr>`;
         }
         body.innerHTML = html;
     }
 
-    showBookingDetail(bookings) {
-        let booking = bookings[0];
+    showBookingDetail(booking) {
         document.getElementById("idForUpdate").value = booking.id;
         document.getElementById("userIdForUpdate").value = booking.userId;
         document.getElementById("flightIdForUpdate").value = booking.flightId;
@@ -56,9 +55,9 @@ export class BookingView {
         document.getElementById("emailNew").value = booking.passengerInfo.email;
         document.getElementById("statusNew").value = booking.status;
     }
-   
-    // showError() {
-    //     alert("Fetch user info error, we're notified")
-    // }
+
+    showError() {
+        alert("Something went wrong!");
+    }
 
 }

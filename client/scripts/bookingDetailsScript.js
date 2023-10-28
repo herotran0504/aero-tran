@@ -3,7 +3,7 @@ import {BookingController} from "./controller/bookingController.js";
 const controller = BookingController.create();
 
 window.onload = async function () {
-    await controller.getBookingByUserId();
+    await controller.getAllBookingsByUser();
     $("#logout").on("click", () => {
         controller.handleLogout();
     });

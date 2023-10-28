@@ -12,9 +12,9 @@ export class BookingController extends BaseController {
     }
 
     // get booking by user id
-    async getBookingByUserId() {
+    async getAllBookingsByUser() {
         try {
-            let result = await this.repository.requestBookingByUserId();
+            let result = await this.repository.requestAllBookingsByUser();
             this.view.showBookings(result);
         } catch (error) {
             console.log(error);
@@ -25,7 +25,7 @@ export class BookingController extends BaseController {
     async getBookingById(id) {
         try {
             let result = await this.repository.requestBookingById(id);
-            console.log(result);
+            await console.log(result);
             this.view.showBookingDetail(result);
         } catch (error) {
             console.log(error);
@@ -33,58 +33,38 @@ export class BookingController extends BaseController {
         }
     }
 
-    async getUserInforByLastBooking(flightId) {
+    async getLastBookingByUser(flightId) {
         try {
-            let id = localStorage.getItem("userId");
-            let result = await this.repository.requestBookingByUserId(id);
-            let booking = result[0];
-            var today = new Date();
-            var dd = String(today.getDate()).padStart(2, '0');
-            var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-            var yyyy = today.getFullYear();
-
+            let booking = await this.repository.requestLastBookingByUser();
+            let today = new Date();
+            const dd = String(today.getDate()).padStart(2, '0');
+            const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+            const yyyy = today.getFullYear();
             today = yyyy + '-' + mm + '-' + dd;
-            //check if can not any booking
-            if (!booking) {
-                booking = {
-                    "id": null,
-                    "userId": id,
-                    "flightId": null,
-                    "bookingDate": today,
-                    "passengerInfo": {
-                        "firstName": null,
-                        "lastName": null,
-                        "email": null
-                    },
-                    "status": null
-                };
-            }
             booking.bookingDate = today;
             booking.flightId = flightId;
             booking.status = "pending";
             this.view.showUserDetail(booking);
         } catch (error) {
-            console.log(error);
+            await console.log(error);
             this.view.showError();
         }
     }
 
-// delete booking by id
     async deleteBookingById(id) {
         try {
             let result = await this.repository.deleteBookingById(id);
             console.log(result);
-            // this.view.showBooking(result);
         } catch (error) {
             console.log(error);
             this.view.showError();
         }
     }
 
-    // add booking
     async addBooking(booking) {
         try {
             await this.repository.addBooking(booking);
+            alert("Booking successfully!");
             Navigator.navigateToBookingDetails();
         } catch (error) {
             console.log(error);
@@ -92,7 +72,6 @@ export class BookingController extends BaseController {
         }
     }
 
-    // update booking
     async updateBooking(booking) {
         try {
             await this.repository.updateBooking(booking);

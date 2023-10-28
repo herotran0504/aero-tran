@@ -6,17 +6,17 @@ class Flight {
         arrivalCity,
         departureDate,
         departureTime,
-        arivalDate,
+        arrivalDate,
         arrivalTime,
         duration,
         aircraftType,
         ecoSeats,
         availableEcoSeats,
         businessSeats,
-        availlableBSeats,
+        availableBSeats,
         businessPrice,
         ecoPrice,
-        isdomestic
+        isDomestic
     ) {
         this.id = id;
         this.flightNumber = flightNumber;
@@ -24,17 +24,17 @@ class Flight {
         this.arrivalCity = arrivalCity;
         this.departureDate = departureDate;
         this.departureTime = departureTime;
-        this.arivalDate = arivalDate;
+        this.arivalDate = arrivalDate;
         this.arrivalTime = arrivalTime;
         this.duration = duration;
         this.aircraftType = aircraftType;
         this.ecoSeats = ecoSeats;
         this.availableEcoSeats = availableEcoSeats;
         this.businessSeats = businessSeats;
-        this.availlableBSeats = availlableBSeats;
+        this.availlableBSeats = availableBSeats;
         this.businessPrice = businessPrice;
         this.ecoPrice = ecoPrice;
-        this.isdomestic = isdomestic;
+        this.isDomestic = isDomestic;
     }
 }
 

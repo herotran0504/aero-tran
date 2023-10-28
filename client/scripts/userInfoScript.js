@@ -12,9 +12,6 @@ async function addEventListeners() {
         event.preventDefault();
         $("#submitBtn").prop('disabled', true);
         controller.update(
-            $("#userName").val(),
-            $("#email").val(),
-            $("#password").val(),
             $("#firstName").val(),
             $("#lastName").val(),
             $("#dob").val(),

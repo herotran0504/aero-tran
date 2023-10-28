@@ -1,6 +1,6 @@
 class Booking {
-    constructor(_id, userId, flightId, bookingDate, passengerInfo, status) {
-        this._id = _id;
+    constructor(id, userId, flightId, bookingDate, passengerInfo, status) {
+        this.id = id;
         this.userId = userId;
         this.flightId = flightId;
         this.bookingDate = bookingDate;

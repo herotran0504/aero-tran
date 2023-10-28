@@ -174,7 +174,7 @@ export class FlightView {
         arrivalCity.textContent = "To: " + data.arrivalCity;
 
         let arrivalDate = doc.createElement('div');
-        arrivalDate.textContent = "To: " + data.arivalDate;
+        arrivalDate.textContent = "To: " + data.arrivalDate;
 
         let arrivalTime = doc.createElement('div');
         arrivalTime.textContent = "Arrival Time: " + data.arrivalTime;
@@ -195,7 +195,7 @@ export class FlightView {
         businessPrice.textContent = "Business price: " + data.businessPrice;
 
         let availableSeats = doc.createElement('div');
-        availableSeats.textContent = "Total business seats Available: " + data.availlableBSeats;
+        availableSeats.textContent = "Total business seats Available: " + data.availableBSeats;
 
         flightTd.appendChild(flightNo);
 

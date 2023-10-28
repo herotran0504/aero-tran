@@ -27,7 +27,7 @@ class UserController {
         const passwordMatch = await bcrypt.compare(password, user.password);
 
         if (passwordMatch) {
-            const token = jwt.sign({userId: user._id}, Const.SECRET_KEY, {expiresIn: `${Const.EXPIRE_TIME_HOURS}h`});
+            const token = jwt.sign({userId: user.id}, Const.SECRET_KEY, {expiresIn: `${Const.EXPIRE_TIME_HOURS}h`});
             return res.status(200).json({message: 'Login successful', token});
         }
 
@@ -48,8 +48,9 @@ class UserController {
     async updateUserInfo(req, res) {
         try {
             const userId = req.userId
-            const {username, email, firstName, lastName, dob, address} = req.body;
-            const userData = {userId, username, email, firstName, lastName, dob, address};
+            const {firstName, lastName, dob, address} = req.body;
+            const userData = {userId, firstName, lastName, dob, address};
+            await console.log(`userData::${userData}`);
             const user = await repository.updateUserInfo(userData);
             return res.status(200).json({message: 'Update user successful', user});
         } catch (error) {

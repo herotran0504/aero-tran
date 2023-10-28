@@ -1,3 +1,576 @@
+const flights = [
+    {
+        id: '616940',
+        flightNumber: 'A350-1',
+        departureCity: 'Dallas',
+        arrivalCity: 'Phoenix',
+        departureDate: '11/1/2023',
+        departureTime: '01:01:01',
+        arrivalDate: '11/01/2023',
+        arrivalTime: '11:11:11',
+        duration: '3:00',
+        aircraftType: 'A350',
+        ecoSeats: '200',
+        availableEcoSeats: '200',
+        businessSeats: '20',
+        availableBSeats: '20',
+        businessPrice: '1100',
+        ecoPrice: '400',
+        isDomestic: '1'
+    },
+    {
+        id: '616941',
+        flightNumber: 'A350-2',
+        departureCity: 'Las Vegas',
+        arrivalCity: 'Indianapolis',
+        departureDate: '11/2/2023',
+        departureTime: '02:02:02',
+        arrivalDate: '11/2/2023',
+        arrivalTime: '12:12:12',
+        duration: '3:00',
+        aircraftType: 'A350',
+        ecoSeats: '200',
+        availableEcoSeats: '200',
+        businessSeats: '20',
+        availableBSeats: '20',
+        businessPrice: '1200',
+        ecoPrice: '450',
+        isDomestic: '0'
+    },
+    {
+        id: '616942',
+        flightNumber: 'A350-3',
+        departureCity: 'Los Angeles',
+        arrivalCity: 'Louisville',
+        departureDate: '11/3/2023',
+        departureTime: '03:03:03',
+        arrivalDate: '11/3/2023',
+        arrivalTime: '13:13:13',
+        duration: '3:00',
+        aircraftType: 'A350',
+        ecoSeats: '200',
+        availableEcoSeats: '200',
+        businessSeats: '20',
+        availableBSeats: '20',
+        businessPrice: '1300',
+        ecoPrice: '500',
+        isDomestic: '1'
+    },
+    {
+        id: '616943',
+        flightNumber: 'A350-4',
+        departureCity: 'Wichita',
+        arrivalCity: 'San Diego',
+        departureDate: '11/4/2023',
+        departureTime: '04:04:04',
+        arrivalDate: '11/4/2023',
+        arrivalTime: '14:14:14',
+        duration: '3:00',
+        aircraftType: 'A350',
+        ecoSeats: '200',
+        availableEcoSeats: '200',
+        businessSeats: '20',
+        availableBSeats: '20',
+        businessPrice: '1400',
+        ecoPrice: '550',
+        isDomestic: '0'
+    },
+    {
+        id: '616944',
+        flightNumber: 'A350-5',
+        departureCity: 'Los Angeles',
+        arrivalCity: 'Las Vegas',
+        departureDate: '11/5/2023',
+        departureTime: '05:05:05',
+        arrivalDate: '11/5/2023',
+        arrivalTime: '15:15:15',
+        duration: '3:00',
+        aircraftType: 'A350',
+        ecoSeats: '200',
+        availableEcoSeats: '200',
+        businessSeats: '20',
+        availableBSeats: '20',
+        businessPrice: '1500',
+        ecoPrice: '600',
+        isDomestic: '1'
+    },
+    {
+        id: '616945',
+        flightNumber: 'A350-6',
+        departureCity: 'Las Vegas',
+        arrivalCity: 'Jacksonville',
+        departureDate: '11/6/2023',
+        departureTime: '06:06:06',
+        arrivalDate: '11/6/2023',
+        arrivalTime: '16:16:16',
+        duration: '3:00',
+        aircraftType: 'A350',
+        ecoSeats: '200',
+        availableEcoSeats: '200',
+        businessSeats: '20',
+        availableBSeats: '20',
+        businessPrice: '1600',
+        ecoPrice: '650',
+        isDomestic: '0'
+    },
+    {
+        id: '616946',
+        flightNumber: 'A350-7',
+        departureCity: 'Raleigh',
+        arrivalCity: 'Denver',
+        departureDate: '11/7/2023',
+        departureTime: '07:07:07',
+        arrivalDate: '11/7/2023',
+        arrivalTime: '17:17:17',
+        duration: '3:00',
+        aircraftType: 'A350',
+        ecoSeats: '200',
+        availableEcoSeats: '200',
+        businessSeats: '20',
+        availableBSeats: '20',
+        businessPrice: '1700',
+        ecoPrice: '700',
+        isDomestic: '1'
+    },
+    {
+        id: '616947',
+        flightNumber: 'A350-8',
+        departureCity: 'Las Vegas',
+        arrivalCity: 'Omaha',
+        departureDate: '11/8/2023',
+        departureTime: '08:08:08',
+        arrivalDate: '11/8/2023',
+        arrivalTime: '18:18:18',
+        duration: '3:00',
+        aircraftType: 'A350',
+        ecoSeats: '200',
+        availableEcoSeats: '200',
+        businessSeats: '20',
+        availableBSeats: '20',
+        businessPrice: '1800',
+        ecoPrice: '750',
+        isDomestic: '0'
+    },
+    {
+        id: '616948',
+        flightNumber: 'A350-9',
+        departureCity: 'Baltimore',
+        arrivalCity: 'New York',
+        departureDate: '11/9/2023',
+        departureTime: '09:09:09',
+        arrivalDate: '11/9/2023',
+        arrivalTime: '19:19:19',
+        duration: '3:00',
+        aircraftType: 'A350',
+        ecoSeats: '200',
+        availableEcoSeats: '200',
+        businessSeats: '20',
+        availableBSeats: '20',
+        businessPrice: '1900',
+        ecoPrice: '800',
+        isDomestic: '1'
+    },
+    {
+        id: '616949',
+        flightNumber: 'A350-10',
+        departureCity: 'Raleigh',
+        arrivalCity: 'San Jose',
+        departureDate: '11/10/2023',
+        departureTime: '010:010:010',
+        arrivalDate: '11/10/2023',
+        arrivalTime: '110:110:110',
+        duration: '3:00',
+        aircraftType: 'A350',
+        ecoSeats: '200',
+        availableEcoSeats: '200',
+        businessSeats: '20',
+        availableBSeats: '20',
+        businessPrice: '2000',
+        ecoPrice: '850',
+        isDomestic: '0'
+    },
+    {
+        id: '616950',
+        flightNumber: 'A350-11',
+        departureCity: 'Fort Worth',
+        arrivalCity: 'Albuquerque',
+        departureDate: '11/11/2023',
+        departureTime: '011:011:011',
+        arrivalDate: '11/11/2023',
+        arrivalTime: '111:111:111',
+        duration: '3:00',
+        aircraftType: 'A350',
+        ecoSeats: '200',
+        availableEcoSeats: '200',
+        businessSeats: '20',
+        availableBSeats: '20',
+        businessPrice: '2100',
+        ecoPrice: '900',
+        isDomestic: '1'
+    },
+    {
+        id: '616951',
+        flightNumber: 'A350-12',
+        departureCity: 'Chicago',
+        arrivalCity: 'Jacksonville',
+        departureDate: '11/12/2023',
+        departureTime: '012:012:012',
+        arrivalDate: '11/12/2023',
+        arrivalTime: '112:112:112',
+        duration: '3:00',
+        aircraftType: 'A350',
+        ecoSeats: '200',
+        availableEcoSeats: '200',
+        businessSeats: '20',
+        availableBSeats: '20',
+        businessPrice: '2200',
+        ecoPrice: '950',
+        isDomestic: '0'
+    },
+    {
+        id: '616952',
+        flightNumber: 'A350-13',
+        departureCity: 'Louisville',
+        arrivalCity: 'Dallas',
+        departureDate: '11/13/2023',
+        departureTime: '013:013:013',
+        arrivalDate: '11/13/2023',
+        arrivalTime: '113:113:113',
+        duration: '3:00',
+        aircraftType: 'A350',
+        ecoSeats: '200',
+        availableEcoSeats: '200',
+        businessSeats: '20',
+        availableBSeats: '20',
+        businessPrice: '2300',
+        ecoPrice: '1000',
+        isDomestic: '1'
+    },
+    {
+        id: '616953',
+        flightNumber: 'A350-14',
+        departureCity: 'San Diego',
+        arrivalCity: 'Los Angeles',
+        departureDate: '11/14/2023',
+        departureTime: '014:014:014',
+        arrivalDate: '11/14/2023',
+        arrivalTime: '114:114:114',
+        duration: '3:00',
+        aircraftType: 'A350',
+        ecoSeats: '200',
+        availableEcoSeats: '200',
+        businessSeats: '20',
+        availableBSeats: '20',
+        businessPrice: '2400',
+        ecoPrice: '1050',
+        isDomestic: '0'
+    },
+    {
+        id: '616954',
+        flightNumber: 'A350-15',
+        departureCity: 'Oakland',
+        arrivalCity: 'Albuquerque',
+        departureDate: '11/15/2023',
+        departureTime: '015:015:015',
+        arrivalDate: '11/15/2023',
+        arrivalTime: '115:115:115',
+        duration: '3:00',
+        aircraftType: 'A350',
+        ecoSeats: '200',
+        availableEcoSeats: '200',
+        businessSeats: '20',
+        availableBSeats: '20',
+        businessPrice: '2500',
+        ecoPrice: '1100',
+        isDomestic: '1'
+    },
+    {
+        id: '616955',
+        flightNumber: 'A350-16',
+        departureCity: 'Phoenix',
+        arrivalCity: 'New Orleans',
+        departureDate: '11/16/2023',
+        departureTime: '016:016:016',
+        arrivalDate: '11/16/2023',
+        arrivalTime: '116:116:116',
+        duration: '3:00',
+        aircraftType: 'A350',
+        ecoSeats: '200',
+        availableEcoSeats: '200',
+        businessSeats: '20',
+        availableBSeats: '20',
+        businessPrice: '2600',
+        ecoPrice: '1150',
+        isDomestic: '0'
+    },
+    {
+        id: '616956',
+        flightNumber: 'A350-17',
+        departureCity: 'Nashville',
+        arrivalCity: 'Sacramento',
+        departureDate: '11/17/2023',
+        departureTime: '017:017:017',
+        arrivalDate: '11/17/2023',
+        arrivalTime: '117:117:117',
+        duration: '3:00',
+        aircraftType: 'A350',
+        ecoSeats: '200',
+        availableEcoSeats: '200',
+        businessSeats: '20',
+        availableBSeats: '20',
+        businessPrice: '2700',
+        ecoPrice: '1200',
+        isDomestic: '1'
+    },
+    {
+        id: '616957',
+        flightNumber: 'A350-18',
+        departureCity: 'Mesa',
+        arrivalCity: 'Austin',
+        departureDate: '11/18/2023',
+        departureTime: '018:018:018',
+        arrivalDate: '11/18/2023',
+        arrivalTime: '118:118:118',
+        duration: '3:00',
+        aircraftType: 'A350',
+        ecoSeats: '200',
+        availableEcoSeats: '200',
+        businessSeats: '20',
+        availableBSeats: '20',
+        businessPrice: '2800',
+        ecoPrice: '1250',
+        isDomestic: '0'
+    },
+    {
+        id: '616958',
+        flightNumber: 'A350-19',
+        departureCity: 'San Francisco',
+        arrivalCity: 'Dallas',
+        departureDate: '11/19/2023',
+        departureTime: '019:019:019',
+        arrivalDate: '11/19/2023',
+        arrivalTime: '119:119:119',
+        duration: '3:00',
+        aircraftType: 'A350',
+        ecoSeats: '200',
+        availableEcoSeats: '200',
+        businessSeats: '20',
+        availableBSeats: '20',
+        businessPrice: '2900',
+        ecoPrice: '1300',
+        isDomestic: '1'
+    },
+    {
+        id: '616959',
+        flightNumber: 'A350-20',
+        departureCity: 'New Orleans',
+        arrivalCity: 'Virginia Beach',
+        departureDate: '11/20/2023',
+        departureTime: '020:020:020',
+        arrivalDate: '11/20/2023',
+        arrivalTime: '120:120:120',
+        duration: '3:00',
+        aircraftType: 'A350',
+        ecoSeats: '200',
+        availableEcoSeats: '200',
+        businessSeats: '20',
+        availableBSeats: '20',
+        businessPrice: '3000',
+        ecoPrice: '1350',
+        isDomestic: '0'
+    },
+    {
+        id: '616960',
+        flightNumber: 'A350-21',
+        departureCity: 'Wichita',
+        arrivalCity: 'San Jose',
+        departureDate: '11/21/2023',
+        departureTime: '021:021:021',
+        arrivalDate: '11/21/2023',
+        arrivalTime: '121:121:121',
+        duration: '3:00',
+        aircraftType: 'A350',
+        ecoSeats: '200',
+        availableEcoSeats: '200',
+        businessSeats: '20',
+        availableBSeats: '20',
+        businessPrice: '3100',
+        ecoPrice: '1400',
+        isDomestic: '1'
+    },
+    {
+        id: '616961',
+        flightNumber: 'A350-22',
+        departureCity: 'Columbus',
+        arrivalCity: 'Oklahoma City',
+        departureDate: '11/22/2023',
+        departureTime: '022:022:022',
+        arrivalDate: '11/22/2023',
+        arrivalTime: '122:122:122',
+        duration: '3:00',
+        aircraftType: 'A350',
+        ecoSeats: '200',
+        availableEcoSeats: '200',
+        businessSeats: '20',
+        availableBSeats: '20',
+        businessPrice: '3200',
+        ecoPrice: '1450',
+        isDomestic: '0'
+    },
+    {
+        id: '616962',
+        flightNumber: 'A350-23',
+        departureCity: 'Columbus',
+        arrivalCity: 'Long Beach',
+        departureDate: '11/23/2023',
+        departureTime: '023:023:023',
+        arrivalDate: '11/23/2023',
+        arrivalTime: '123:123:123',
+        duration: '3:00',
+        aircraftType: 'A350',
+        ecoSeats: '200',
+        availableEcoSeats: '200',
+        businessSeats: '20',
+        availableBSeats: '20',
+        businessPrice: '3300',
+        ecoPrice: '1500',
+        isDomestic: '1'
+    },
+    {
+        id: '616963',
+        flightNumber: 'A350-24',
+        departureCity: 'Austin',
+        arrivalCity: 'Long Beach',
+        departureDate: '11/24/2023',
+        departureTime: '024:024:024',
+        arrivalDate: '11/24/2023',
+        arrivalTime: '124:124:124',
+        duration: '3:00',
+        aircraftType: 'A350',
+        ecoSeats: '200',
+        availableEcoSeats: '200',
+        businessSeats: '20',
+        availableBSeats: '20',
+        businessPrice: '3400',
+        ecoPrice: '1550',
+        isDomestic: '0'
+    },
+    {
+        id: '616964',
+        flightNumber: 'A350-25',
+        departureCity: 'Phoenix',
+        arrivalCity: 'San Jose',
+        departureDate: '11/25/2023',
+        departureTime: '025:025:025',
+        arrivalDate: '11/25/2023',
+        arrivalTime: '125:125:125',
+        duration: '3:00',
+        aircraftType: 'A350',
+        ecoSeats: '200',
+        availableEcoSeats: '200',
+        businessSeats: '20',
+        availableBSeats: '20',
+        businessPrice: '3500',
+        ecoPrice: '1600',
+        isDomestic: '1'
+    },
+    {
+        id: '616965',
+        flightNumber: 'A350-26',
+        departureCity: 'Sacramento',
+        arrivalCity: 'New York',
+        departureDate: '11/26/2023',
+        departureTime: '026:026:026',
+        arrivalDate: '11/26/2023',
+        arrivalTime: '126:126:126',
+        duration: '3:00',
+        aircraftType: 'A350',
+        ecoSeats: '200',
+        availableEcoSeats: '200',
+        businessSeats: '20',
+        availableBSeats: '20',
+        businessPrice: '3600',
+        ecoPrice: '1650',
+        isDomestic: '0'
+    },
+    {
+        id: '616966',
+        flightNumber: 'A350-27',
+        departureCity: 'Fresno',
+        arrivalCity: 'New Orleans',
+        departureDate: '11/27/2023',
+        departureTime: '027:027:027',
+        arrivalDate: '11/27/2023',
+        arrivalTime: '127:127:127',
+        duration: '3:00',
+        aircraftType: 'A350',
+        ecoSeats: '200',
+        availableEcoSeats: '200',
+        businessSeats: '20',
+        availableBSeats: '20',
+        businessPrice: '3700',
+        ecoPrice: '1700',
+        isDomestic: '1'
+    },
+    {
+        id: '616967',
+        flightNumber: 'A350-28',
+        departureCity: 'New Orleans',
+        arrivalCity: 'San Francisco',
+        departureDate: '11/28/2023',
+        departureTime: '028:028:028',
+        arrivalDate: '11/28/2023',
+        arrivalTime: '128:128:128',
+        duration: '3:00',
+        aircraftType: 'A350',
+        ecoSeats: '200',
+        availableEcoSeats: '200',
+        businessSeats: '20',
+        availableBSeats: '20',
+        businessPrice: '3800',
+        ecoPrice: '1750',
+        isDomestic: '0'
+    },
+    {
+        id: '616968',
+        flightNumber: 'A350-29',
+        departureCity: 'Columbus',
+        arrivalCity: 'Wichita',
+        departureDate: '11/29/2023',
+        departureTime: '029:029:029',
+        arrivalDate: '11/29/2023',
+        arrivalTime: '129:129:129',
+        duration: '3:00',
+        aircraftType: 'A350',
+        ecoSeats: '200',
+        availableEcoSeats: '200',
+        businessSeats: '20',
+        availableBSeats: '20',
+        businessPrice: '3900',
+        ecoPrice: '1800',
+        isDomestic: '1'
+    },
+    {
+        id: '616969',
+        flightNumber: 'A350-30',
+        departureCity: 'Portland',
+        arrivalCity: 'Tucson',
+        departureDate: '11/30/2023',
+        departureTime: '030:030:030',
+        arrivalDate: '11/30/2023',
+        arrivalTime: '130:130:130',
+        duration: '3:00',
+        aircraftType: 'A350',
+        ecoSeats: '200',
+        availableEcoSeats: '200',
+        businessSeats: '20',
+        availableBSeats: '20',
+        businessPrice: '4000',
+        ecoPrice: '1850',
+        isDomestic: '0'
+    }
+];
+
 const BaseDao = require('./BaseDao');
 
 class FlightDao extends BaseDao {
@@ -6,48 +579,34 @@ class FlightDao extends BaseDao {
     }
 
     async getAllFlights() {
-        try {
-            await this.connect();
-            const flightsCollection = this.db.collection('flights');
-            return await flightsCollection.find({}).toArray();
-        } finally {
-            await this.disconnect();
-        }
+        return flights;
     }
 
     async getFlightById(id) {
-        try {
-            await this.connect();
-            const flightsCollection = this.db.collection('flights');
-            return await flightsCollection.find({ id }).toArray();
-        } finally {
-            await this.disconnect();
-        }
+        return flights.find(f => f.id === id)
     }
 
     async findFlights(query) {
-        try {
-            await this.connect();
-            const flightsCollection = this.db.collection('flights');
-            let result = await flightsCollection.find(query).toArray();
-            //  console.log(`findFlights result: `, result);
-            return result;
-        } finally {
-            await this.disconnect();
-        }
+        const {departureCity, arrivalCity, arivalDate, departureDate} = query;
+        return flights.filter(f => {
+            return f.departureCity === departureCity &&
+                f.arrivalCity === arrivalCity &&
+                Date.parse(f.arrivalDate) === Date.parse(arivalDate) &&
+                Date.parse(f.departureDate) === Date.parse(departureDate);
+        })
     }
 
     async updateAvailableSeatsById(id, body) {
         try {
             await this.connect();
             const flightsCollection = this.db.collection('flights');
-            let flight = await flightsCollection.find({ id }).toArray();
+            let flight = await flightsCollection.find({id}).toArray();
 
             let ecoBooked = parseInt(body.numOfEcoBooked);
             let businessBooked = parseInt(body.numOfBusinessBooked);
 
             let avaiEco = parseInt(flight[0].availableEcoSeats);
-            let avaiBusiness = parseInt(flight[0].availlableBSeats);
+            let avaiBusiness = parseInt(flight[0].availableBSeats);
 
             if (!ecoBooked || !avaiEco || !businessBooked || !avaiBusiness ||
                 ecoBooked > avaiEco || businessBooked > avaiBusiness) {
@@ -56,10 +615,10 @@ class FlightDao extends BaseDao {
             }
             let fieldToUpdate = {
                 availableEcoSeats: (avaiEco - ecoBooked),
-                availlableBSeats: (avaiBusiness - businessBooked)
+                availableBSeats: (avaiBusiness - businessBooked)
             };
             console.log(fieldToUpdate);
-            return await flightsCollection.updateMany({ id: id }, { $set: fieldToUpdate });
+            return await flightsCollection.updateMany({id: id}, {$set: fieldToUpdate});
         } finally {
             await this.disconnect();
         }

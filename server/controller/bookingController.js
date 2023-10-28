@@ -1,37 +1,38 @@
-const e = require("cors");
 const BookingRepository = require("../repository/bookingRepository");
+const repository = new BookingRepository();
 
 class BookingController {
 
-    async getAllBookings(req, res, next) {
-        res.status(200).json(await (new BookingRepository()).getAllBookings());
+    async getAllBookings(req, res) {
+        res.status(200).json(await repository.getAllBookings());
     }
 
-    //get booking by id
-    async getBookingById(req, res, next) {
-        res.status(200).json(await (new BookingRepository()).getBookingById(parseInt(req.params.id)));
+    async getBookingById(req, res) {
+        res.status(200).json(await repository.getBookingById(parseInt(req.params.id)));
     }
 
-    //get booking by user id
-    async getBookingByUserId(req, res, next) {
-        res.status(200).json(await (new BookingRepository()).getBookingByUserId(req.userId));
+    async getAllBookingByUser(req, res) {
+        let booking = await repository.getAllBookingByUserId(req.userId);
+        res.status(200).json(booking);
     }
 
-    //add new booking
-    async addBooking(req, res, next) {
+    async getLastBookingByUser(req, res) {
+        let booking = await repository.getLastBookingByUserId(req.userId);
+        res.status(200).json(booking);
+    }
+
+    async addBooking(req, res) {
         let body = req.body;
-        body.userId = (req.userId);
-        res.status(200).json(await (new BookingRepository()).addBooking(body));
+        body.userId = req.userId;
+        res.status(200).json(await repository.addBooking(body));
     }
 
-    //delete booking by id
-    async deleteBookingById(req, res, next) {
-        res.status(200).json(await (new BookingRepository()).deleteBookingById(parseInt(req.params.id)));
+    async deleteBookingById(req, res) {
+        res.status(200).json(await repository.deleteBookingById(parseInt(req.params.id)));
     }
-    //update booking by id
-    async updateBookingById(req, res, next) {
-        console.log(req.body);
-        res.status(200).json(await (new BookingRepository()).updateBookingById(parseInt(req.params.id),req.body));
+
+    async updateBookingById(req, res) {
+        res.status(200).json(await repository.updateBookingById(parseInt(req.params.id), req.body));
     }
 
 }

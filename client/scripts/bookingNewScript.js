@@ -9,15 +9,14 @@ window.onload = async function () {
     urlParams.get('isEco');
 
     //get all bookings by current user id
-    await controller.getUserInforByLastBooking(flightId);
+    await controller.getLastBookingByUser(flightId);
     $("#logout").on("click", () => {
         controller.handleLogout();
     });
 }
 
-
 // add booking
-document.getElementById("btnAdd").addEventListener("click",  function (event) {
+document.getElementById("bookingForm").addEventListener("submit",  function (event) {
     event.preventDefault();
     let userId = document.getElementById("userIdNew").value;
     let flightId = document.getElementById("flightIdNew").value;
@@ -43,6 +42,4 @@ document.getElementById("btnAdd").addEventListener("click",  function (event) {
         "status": status
     };
     controller.addBooking(booking);
-    alert("Booking successfully!");  
-    window.location.href = `/client/pages/index.html`; 
 });

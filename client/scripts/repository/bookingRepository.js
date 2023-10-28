@@ -16,15 +16,14 @@ export class BookingRepository {
 
         const response = await fetch(url, requestOptions);
         if (response.ok) {
-            let data = response.json();
-            return data;
+            return response.json();
         } else {
             throw new Error(`Bookings request failed with status ${response.status}`);
         }
     }
-    // get booking by user id
-    async requestBookingByUserId(id) {
-        const url = `${URL}/bookings/user/${id}`;
+
+    async requestAllBookingsByUser() {
+        const url = `${URL}/bookings/all`;
 
         const requestOptions = {
             headers: {
@@ -35,14 +34,30 @@ export class BookingRepository {
 
         const response = await fetch(url, requestOptions);
         if (response.ok) {
-            let data = response.json();
-            return data;
+            return response.json();
         } else {
             throw new Error(`Bookings request failed with status ${response.status}`);
         }
     }
 
-    // delete booking by id
+    async requestLastBookingByUser() {
+        const url = `${URL}/bookings/user`;
+
+        const requestOptions = {
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": Storage.retrieveToken()
+            },
+        };
+
+        const response = await fetch(url, requestOptions);
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw new Error(`Bookings request failed with status ${response.status}`);
+        }
+    }
+
     async deleteBookingById(id) {
         const url = `${URL}/bookings/${id}`;
 
@@ -56,14 +71,12 @@ export class BookingRepository {
 
         const response = await fetch(url, requestOptions);
         if (response.ok) {
-            let data = response.json();
-            return data;
+            return response.json();
         } else {
             throw new Error(`Bookings request failed with status ${response.status}`);
         }
     }
 
-    // add booking
     async addBooking(booking) {
         const url = `${URL}/bookings`;
 
@@ -78,14 +91,12 @@ export class BookingRepository {
 
         const response = await fetch(url, requestOptions);
         if (response.ok) {
-            let data = response.json();
-            return data;
+            return response.json();
         } else {
             throw new Error(`Bookings request failed with status ${response.status}`);
         }
     }
 
-    // update booking
     async updateBooking(booking) {
         const url = `${URL}/bookings/${booking.id}`;
 
@@ -100,11 +111,9 @@ export class BookingRepository {
 
         const response = await fetch(url, requestOptions);
         if (response.ok) {
-            let data = response.json();
-            console.log(data);
-            return data;
+            return response.json();
         } else {
-            // throw new Error(`Bookings request failed with status ${response.status}`);
+            throw new Error(`Bookings request failed with status ${response.status}`);
         }
     }
 }

@@ -1,27 +1,26 @@
 const express = require("express");
 const BookingController = require("../controller/bookingController");
-let bookingController = new BookingController();
+let controller = new BookingController();
 
 const router = express.Router();
 
 // get all bookings
-router.get("/", bookingController.getAllBookings);
-//get booking by id
-router.get("/:id", bookingController.getBookingById);
+router.get("/", controller.getAllBookings);
+
 //get booking by user id
-router.get("/user/:id", bookingController.getBookingByUserId);
+router.get("/all", controller.getAllBookingByUser);
+router.get("/user", controller.getLastBookingByUser);
+
+//get booking by id
+router.get("/:id", controller.getBookingById);
+
 //add new booking
-router.post("/", bookingController.addBooking);
+router.post("/", controller.addBooking);
+
 //delete booking by id
-router.delete("/:id", bookingController.deleteBookingById);
+router.delete("/:id", controller.deleteBookingById);
+
 //update booking by id
-router.put("/:id", bookingController.updateBookingById);
-
-
-
-
-
-
-
+router.put("/:id", controller.updateBookingById);
 
 module.exports = router;

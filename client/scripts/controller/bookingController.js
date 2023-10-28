@@ -1,5 +1,5 @@
 import { BookingRepository } from "../repository/bookingRepository.js";
-import { BoookingView } from "../view/bookingView.js";
+import { BookingView } from "../view/bookingView.js";
 import {UserRepository} from "../repository/userRepository.js";
 
 export class BookingController {
@@ -112,7 +112,7 @@ export class BookingController {
     }
 
     static create() {
-        return new BookingController(new BoookingView(), new BookingRepository(), new UserRepository());
+        return new BookingController(new BookingView(), new BookingRepository(), new UserRepository());
     }
 
 }

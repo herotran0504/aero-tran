@@ -1,19 +1,19 @@
-import { BookingRepository } from "../repository/bookingRepository.js";
-import { BookingView } from "../view/bookingView.js";
-import {UserRepository} from "../repository/userRepository.js";
+import {BookingRepository} from "../repository/bookingRepository.js";
+import {BookingView} from "../view/bookingView.js";
+import {BaseController} from "./baseController.js";
+import {Navigator} from "../navigator/navigator.js";
 
-export class BookingController {
+export class BookingController extends BaseController {
 
-    constructor(view, repository, userRepository) {
+    constructor(view, repository) {
+        super();
         this.view = view;
         this.repository = repository;
-        this.userRepository = userRepository
     }
 
-        // get booking by user id
+    // get booking by user id
     async getBookingByUserId() {
         try {
-            let userInfo = await this.userRepository.requestUserInfo();
             let result = await this.repository.requestBookingByUserId();
             // console.log(result);
             this.view.showBookings(result);
@@ -40,7 +40,7 @@ export class BookingController {
             let result = await this.repository.requestBookingByUserId(id);
             let booking = result[0];
             //check if can not any booking
-            if (booking == null || booking == undefined) {
+            if (!booking) {
                 booking = {
                     "id": null,
                     "userId": id,
@@ -65,19 +65,7 @@ export class BookingController {
         }
     }
 
-    async getBookings() {
-        try {
-            let result = await this.repository.requestBookings();
-            console.log(result);
-            this.view.showBooking(result);
-        } catch (error) {
-            console.log(error);
-            this.view.showError();
-        }
-    }
-
-
-    // delete booking by id
+// delete booking by id
     async deleteBookingById(id) {
         try {
             let result = await this.repository.deleteBookingById(id);
@@ -93,7 +81,7 @@ export class BookingController {
     async addBooking(booking) {
         try {
             let result = await this.repository.addBooking(booking);
-            console.log(result);
+            Navigator.navigateToHomePage();
         } catch (error) {
             console.log(error);
             this.view.showError();
@@ -104,7 +92,8 @@ export class BookingController {
     async updateBooking(booking) {
         try {
             let result = await this.repository.updateBooking(booking);
-            console.log(result);
+            alert("Booking update successfully!");
+            Navigator.navigateToBookingDetails();
         } catch (error) {
             console.log(error);
             this.view.showError();
@@ -112,7 +101,7 @@ export class BookingController {
     }
 
     static create() {
-        return new BookingController(new BookingView(), new BookingRepository(), new UserRepository());
+        return new BookingController(new BookingView(), new BookingRepository());
     }
 
 }

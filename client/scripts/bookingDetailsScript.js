@@ -3,9 +3,10 @@ import {BookingController} from "./controller/bookingController.js";
 const controller = BookingController.create();
 
 window.onload = async function () {
-
-    //get all bookings by current user id
     await controller.getBookingByUserId();
+    $("#logout").on("click", () => {
+        controller.handleLogout();
+    });
 }
 
 window.onDelete = async function(id) {

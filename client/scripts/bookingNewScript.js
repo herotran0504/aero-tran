@@ -10,6 +10,9 @@ window.onload = async function () {
     
     //get all bookings by current user id
     await controller.getUserInforByLastBooking(flightId,isEco);
+    $("#logout").on("click", () => {
+        controller.handleLogout();
+    });
 }
 
 

@@ -27,7 +27,7 @@ class UserController {
         const passwordMatch = await bcrypt.compare(password, user.password);
 
         if (passwordMatch) {
-            const token = jwt.sign({userId: user._id}, Const.SECRET_KEY, {expiresIn: `${Const.EXPIRE_TIME}h`});
+            const token = jwt.sign({userId: user._id}, Const.SECRET_KEY, {expiresIn: `${Const.EXPIRE_TIME_HOURS}h`});
             return res.status(200).json({message: 'Login successful', token});
         }
 

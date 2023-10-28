@@ -13,7 +13,6 @@ export class LoginController {
     async login(email, password) {
         try {
             let result = await this.repository.requestLogin(email, password);
-            this.view.showLoginSuccess();
             Storage.storeToken(result.token);
             Navigator.navigateToHomePage();
         } catch (error) {

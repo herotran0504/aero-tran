@@ -108,10 +108,6 @@
         <h2 class="title">New Booking Confirmation</h2>
         <form id="bookingForm">
             <div class="form-group">
-                <label for="id">Booking ID:</label>
-                <input type="text" class="form-control" id="idNew" readonly="true" name="id" required>
-            </div>
-            <div class="form-group">
                 <label for="userId">User ID:</label>
                 <input type="text" class="form-control" id="userIdNew" readonly="true" name="userId" required>
             </div>
@@ -121,7 +117,7 @@
             </div>
             <div class="form-group">
                 <label for="BookingDate">Booking Date:</label>
-                <input type="text" class="form-control" id="bookingDateNew" name="BookingDate" required>
+                <input type="date" class="form-control" id="bookingDateNew" name="BookingDate" required>
             </div>
             <div class="form-group">
                 <label>Passenger Information:</label>
@@ -156,31 +152,5 @@
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.min.js"></script>
-    <script>
-        // Add passenger input fields
-        $(".add-passenger").click(function() {
-            $(".passenger-info").append(
-                `<div class="form-row">
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="First Name" name="passengerFirstName[]" required>
-                    </div>
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Last Name" name="passengerLastName[]" required>
-                    </div>
-                    <div class="col">
-                        <input type="email" class="form-control" placeholder="Email" name="passengerEmail[]" required>
-                    </div>
-                    <div class="col">
-                        <button type="button" class="btn btn-danger remove-passenger">Remove</button>
-                    </div>
-                </div>`
-            );
-        });
-
-        // Remove passenger input fields
-        $(document).on("click", ".remove-passenger", function() {
-            $(this).closest(".form-row").remove();
-        });
-    </script>
 </body>
 </html>

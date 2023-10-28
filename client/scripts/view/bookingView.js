@@ -1,11 +1,7 @@
-export class BoookingView {
+export class BookingView {
 
     showBookings(bookings) {
-        // console.log(bookings[0]);
         let body = document.getElementById('tbody');
-        console.log(bookings);
-        // console.log(bookings[0]);
-        // let data = bookings[0];
         let data = bookings;
         
         //show booking data in table
@@ -40,8 +36,6 @@ export class BoookingView {
     }
 
     showBookingDetail(bookings) {
-        let body = document.getElementById('tbody');
-        // console.log(bookings[0].id);
         let booking = bookings[0];
         document.getElementById("idForUpdate").value = booking.id;
         document.getElementById("userIdForUpdate").value = booking.userId;
@@ -54,10 +48,6 @@ export class BoookingView {
     }
 
     showUserDetail(booking) {
-        let body = document.getElementById('tbody');
-        // console.log(bookings[0]);
-        // let booking = bookings[0];
-        document.getElementById("idNew").value = booking.id;
         document.getElementById("userIdNew").value = booking.userId;
         document.getElementById("flightIdNew").value = booking.flightId;
         document.getElementById("bookingDateNew").value = booking.bookingDate;

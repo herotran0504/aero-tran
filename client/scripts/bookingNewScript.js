@@ -7,23 +7,11 @@ window.onload = async function () {
     const urlParams = new URLSearchParams(queryString);
     let flightId = urlParams.get('flightId');
     let isEco = urlParams.get('isEco');
-    // console.log(flightId);
-    // console.log(isEco);
     
     //get all bookings by current user id
     await controller.getUserInforByLastBooking(flightId,isEco);
 }
 
-// window.onDelete = async function(id) {
-//     console.log(id);
-//     await controller.deleteBookingById(id);
-//     window.location.reload();
-// }
-
-// window.onUpdate = async function(id) {
-//     console.log(id);
-//     window.location.href = `/client/pages/bookingupdate.html?id=${id}`;
-// }
 
 // add booking
 document.getElementById("btnAdd").addEventListener("click", async function () {

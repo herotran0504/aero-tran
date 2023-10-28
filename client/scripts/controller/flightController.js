@@ -1,11 +1,13 @@
-import { FlightView } from "../view/flightView.js";
-import { FlightRepository } from "../repository/flightRepository.js";
-import { Navigator } from "../navigator/navigator.js";
-import { Storage } from "../storage/storage.js";
+import {FlightView} from "../view/flightView.js";
+import {FlightRepository} from "../repository/flightRepository.js";
+import {Navigator} from "../navigator/navigator.js";
+import {Storage} from "../storage/storage.js";
+import {BaseController} from "./baseController.js";
 
-export class FlightController {
+export class FlightController extends BaseController {
 
     constructor(flightView, flightRepository) {
+        super();
         this.flightView = flightView;
         this.flightRepository = flightRepository;
     }
@@ -23,7 +25,7 @@ export class FlightController {
     async searchFlight(fromCity, toCity, departure, arrival) {
         try {
             const result = await this.flightRepository.searchFlight(fromCity, toCity, departure, arrival);
-            if(result.length > 0) {
+            if (result.length > 0) {
                 this.flightView.showFlightSearchSuccess(result, (url) => {
                     if (Storage.hasValidToken()) {
                         Navigator.navigateTo(url);

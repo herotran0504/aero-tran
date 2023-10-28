@@ -208,12 +208,13 @@ class UserDao extends BaseDao {
     }
 
     async createUser(user) {
-        user.id = Math.max(users.map(u => parseInt(u.id))) + 1;
+        user.id = users.map(u => parseInt(u.id)).reduce((u1, u2) => u1 > u2 ? u1 : u2) + 1;
+        await console.log(`createUser(${JSON.stringify(user)})`)
         users.push(user);
     }
 
     async updateUser(user) {
-       await console.log(`updateUser(${user})`)
+        await console.log(`updateUser(${user})`)
         const updateUser = users.find(u => u.id === user.userId);
         updateUser.firstName = user.firstName;
         updateUser.lastName = user.lastName;

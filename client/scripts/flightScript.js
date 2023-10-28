@@ -1,18 +1,22 @@
-import { FlightController } from "./controller/flightController.js";
-import { HomeController } from "./controller/homeController.js";
+import {FlightController} from "./controller/flightController.js";
+import {HomeController} from "./controller/homeController.js";
+
 const controller = FlightController.create();
 const homeController = HomeController.create();
 
 window.onload = async function () {
-    addSearchEvent();
-    addApplyEvent();
-    loadFlight();
+    await addSearchEvent();
+    await addApplyEvent();
+    await loadFlight();
     homeController.checkUserState();
+    $("#logout").on("click", () => {
+        controller.handleLogout();
+    });
 }
 const doc = document;
 
 async function loadFlight() {
-    controller.searchAllFlights();
+    await controller.searchAllFlights();
 }
 
 async function addSearchEvent() {
@@ -32,7 +36,7 @@ async function addSearchEvent() {
         // fromDay = '11/17/2023';
         // toDay = '11/17/2023';
         controller.searchFlight(fromCity, toCity, formatInputDate(fromDay), formatInputDate(toDay)).then(() => {
-        // controller.searchFlight(fromCity, toCity, fromDay, toDay).then(() => {
+            // controller.searchFlight(fromCity, toCity, fromDay, toDay).then(() => {
             searchBtn.disabled = false;
             searchForm.reset();
         });

@@ -40,7 +40,7 @@ class BookingDao extends BaseDao {
         if (bookings.length === 0) {
             lastId = initBookingId
         } else {
-            lastId = Math.max(bookings.map(b => parseInt(b.id))) + 1;
+            lastId = bookings.map(b => parseInt(b.id)).reduce((b1, b2) => b1 > b2 ? b1 : b2) + 1;
         }
         booking.id = lastId;
         bookings.push(booking);

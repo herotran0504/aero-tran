@@ -2,11 +2,17 @@ import { FlightController } from "./controller/flightController.js";
 const controller = FlightController.create();
 
 window.onload = async function () {
-    addEventListeners();
+    addSearchEvent();
+    addApplyEvent();
+    loadFlight();
 }
 const doc = document;
 
-async function addEventListeners() {
+async function loadFlight() {
+    controller.searchAllFlights();
+}
+
+async function addSearchEvent() {
     const searchBtn = doc.getElementById('btnsearchFlight');
     const searchForm = doc.getElementById('searchFlight');
     // submit event
@@ -29,7 +35,9 @@ async function addEventListeners() {
             searchForm.reset();
         });
     })
+}
 
+async function addApplyEvent() {
     const applyBtn = doc.getElementById('btnApply');
     const applyForm = doc.getElementById('filterForm');
     applyForm.addEventListener('submit', (env) => {

@@ -28,6 +28,31 @@ export class FlightView {
             tBoody.appendChild(tr);
         }
     }
+
+    loadAllsFlight(result) {
+        const doc = document;
+        const flightFrom = doc.getElementById('flightFrom');
+        const flightTo = doc.getElementById('flightTo');
+        const seenFrom = new Set();
+        const seenTo = new Set();
+        for (const flight of result) {
+            let optionFrom = doc.createElement('option');
+            optionFrom.text = flight.departureCity;
+            optionFrom.value = flight.departureCity;
+            if (!seenFrom.has(optionFrom.value)) {
+                seenFrom.add(optionFrom.value);
+                flightFrom.appendChild(optionFrom);
+            }
+
+            let optionTo = doc.createElement('option');
+            optionTo.text = flight.arrivalCity;
+            optionTo.value = flight.arrivalCity;
+            if (!seenTo.has(optionTo.value)) {
+                seenTo.add(optionTo.value);
+                flightTo.appendChild(optionTo);
+            }
+        }
+    }
     createFromColumn(data, isDepart = true) {
         const doc = document;
         //create from collumn
@@ -97,7 +122,7 @@ export class FlightView {
             let tbBodyDetails = doc.getElementById('tbodyFlightsDetails');
             while (tbBodyDetails.firstChild) {
                 tbBodyDetails.removeChild(tbBodyDetails.firstChild);
-              }
+            }
             let info = this.createDetailsInfo(data);
             tbBodyDetails.appendChild(info);
         })
@@ -165,10 +190,10 @@ export class FlightView {
 
         let availlableBSeats = doc.createElement('div');
         availlableBSeats.textContent = "Total business seats Available: " + data.availlableBSeats;
-        
+
 
         flightTd.appendChild(flightNo);
-        
+
         fromtd.appendChild(departureCity);
         fromtd.appendChild(departureDate);
         fromtd.appendChild(departureTime);
@@ -183,8 +208,8 @@ export class FlightView {
         totd.appendChild(arrivalCity);
         totd.appendChild(arivalDate);
         totd.appendChild(arrivalTime);
-        
-        
+
+
         info.appendChild(flightTd);
         info.appendChild(fromtd);
         info.appendChild(durationtd);

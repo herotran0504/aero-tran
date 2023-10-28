@@ -10,6 +10,15 @@ export class FlightController {
         this.flightView = flightView;
         this.flightRepository = flightRepository;
     }
+    async searchAllFlights() {
+        try {
+            let result = await this.flightRepository.searchAllFlights();
+            this.flightView.loadAllsFlight(result);
+        } catch (error) {
+            console.log(error);
+            this.flightView.showFlightSearchFail();
+        }
+    }
 
     async searchFlight(fromCity, toCity, departure, arival) {
         try {

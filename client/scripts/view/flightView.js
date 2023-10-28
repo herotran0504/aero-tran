@@ -89,6 +89,7 @@ export class FlightView {
         let td = doc.createElement('td');
 
         let link = doc.createElement('a');
+        link.classList.add("detailLink");
         link.textContent = "Details...";
         link.href = "";
         link.addEventListener('click', (evt) => {

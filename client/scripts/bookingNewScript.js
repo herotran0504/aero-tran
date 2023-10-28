@@ -21,16 +21,20 @@ document.getElementById("btnAdd").addEventListener("click",  function (event) {
     event.preventDefault();
     let userId = document.getElementById("userIdNew").value;
     let flightId = document.getElementById("flightIdNew").value;
-    let bookingDate = document.getElementById("bookingDateNew").value;
     let firstName = document.getElementById("firstNameNew").value;
     let lastName = document.getElementById("lastNameNew").value;
     let email = document.getElementById("emailNew").value;
     let status = document.getElementById("statusNew").value;
+    let today = new Date();
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    const yyyy = today.getFullYear();
+    today = mm + '/' + dd + '/' + yyyy;
     let booking = {
         "id": 1,
         "userId": userId,
         "flightId": flightId,
-        "bookingDate": bookingDate,
+        "bookingDate": today,
         "passengerInfo": {
             "firstName": firstName,
             "lastName": lastName,

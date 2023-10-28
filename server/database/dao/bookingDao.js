@@ -1,4 +1,4 @@
-const BaseDao = require('./BaseDao');
+const BaseDao = require('./baseDao');
 
 class BookingDao extends BaseDao {
     constructor() {

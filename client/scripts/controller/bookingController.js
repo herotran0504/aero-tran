@@ -35,16 +35,22 @@ export class BookingController extends BaseController {
 
     async getUserInforByLastBooking(flightId) {
         try {
-            let id = 1;
+            let id = localStorage.getItem("userId");
             let result = await this.repository.requestBookingByUserId(id);
             let booking = result[0];
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+            var yyyy = today.getFullYear();
+
+            today = yyyy + '-' + mm + '-' + dd;
             //check if can not any booking
             if (!booking) {
                 booking = {
                     "id": null,
                     "userId": id,
                     "flightId": null,
-                    "bookingDate": null,
+                    "bookingDate": today,
                     "passengerInfo": {
                         "firstName": null,
                         "lastName": null,
@@ -53,8 +59,7 @@ export class BookingController extends BaseController {
                     "status": null
                 };
             }
-            console.log(booking);
-            console.log(result);
+            booking.bookingDate = today;
             booking.flightId = flightId;
             booking.status = "pending";
             this.view.showUserDetail(booking);

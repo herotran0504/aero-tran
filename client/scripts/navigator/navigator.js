@@ -7,5 +7,8 @@ export const Navigator = {
     },
     navigateToLoginPage() {
         this.navigateTo('/client/pages/login.html');
+    },
+    navigateToBookingDetails() {
+        this.navigateTo('/client/pages/bookingdetails.html');
     }
 };

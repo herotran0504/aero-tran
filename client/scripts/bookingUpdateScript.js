@@ -11,35 +11,36 @@ window.onload = async function () {
     console.log(id);
     //get booking by id
     await controller.getBookingById(id);
+    await addEventListeners();
+}
+
+async function addEventListeners() {
+    $("#form").on("submit", function (event) {
+        event.preventDefault();
+        let id = $("#idForUpdate").val();
+        let userId = $("#userIdForUpdate").val();
+        let flightId = $("#flightIdForUpdate").val();
+        let bookingDate = $("#bookingDateForUpdate").val();
+        let firstName = $("#firstNameForUpdate").val();
+        let lastName = $("#lastNameForUpdate").val();
+        let email = $("#emailForUpdate").val();
+        let status = $("#status").val();
+
+        let booking = {
+            "id": parseInt(id),
+            "userId": userId,
+            "flightId": flightId,
+            "bookingDate": bookingDate,
+            "passengerInfo": {
+                "firstName": firstName,
+                "lastName": lastName,
+                "email": email
+            },
+            "status": status
+        };
+        controller.updateBooking(booking);
+    });
     $("#logout").on("click", () => {
         controller.handleLogout();
     });
 }
-
-
-// update booking
-document.getElementById("btnUpdate").addEventListener("click", async function () {
-    let id = document.getElementById("idForUpdate").value;
-    let userId = document.getElementById("userIdForUpdate").value;
-    let flightId = document.getElementById("flightIdForUpdate").value;
-    let bookingDate = document.getElementById("bookingDateForUpdate").value;
-    let firstName = document.getElementById("firstNameForUpdate").value;
-    let lastName = document.getElementById("lastNameForUpdate").value;
-    let email = document.getElementById("emailForUpdate").value;
-    let status = document.getElementById("status").value;
-    let booking = {
-        "id": parseInt(id),
-        "userId": userId,
-        "flightId": flightId,
-        "bookingDate": bookingDate,
-        "passengerInfo": {
-            "firstName": firstName,
-            "lastName": lastName,
-            "email": email
-        },
-        "status": status
-    };
-    await controller.updateBooking(booking);   
-    alert("Booking update successfully!");
-    window.location.href = `/client/pages/bookingdetails.html`;
-});

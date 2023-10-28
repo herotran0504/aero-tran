@@ -1,6 +1,7 @@
 import {BookingRepository} from "../repository/bookingRepository.js";
 import {BookingView} from "../view/bookingView.js";
 import {BaseController} from "./baseController.js";
+import {Navigator} from "../navigator/navigator";
 
 export class BookingController extends BaseController {
 
@@ -63,6 +64,7 @@ export class BookingController extends BaseController {
             this.view.showError();
         }
     }
+
 // delete booking by id
     async deleteBookingById(id) {
         try {
@@ -79,7 +81,7 @@ export class BookingController extends BaseController {
     async addBooking(booking) {
         try {
             let result = await this.repository.addBooking(booking);
-            console.log(result);
+            Navigator.navigateToHomePage();
         } catch (error) {
             console.log(error);
             this.view.showError();
@@ -90,7 +92,8 @@ export class BookingController extends BaseController {
     async updateBooking(booking) {
         try {
             let result = await this.repository.updateBooking(booking);
-            console.log(result);
+            alert("Booking update successfully!");
+            Navigator.navigateToBookingDetails();
         } catch (error) {
             console.log(error);
             this.view.showError();

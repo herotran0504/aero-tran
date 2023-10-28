@@ -1,7 +1,7 @@
 import {BookingRepository} from "../repository/bookingRepository.js";
 import {BookingView} from "../view/bookingView.js";
 import {BaseController} from "./baseController.js";
-import {Navigator} from "../navigator/navigator";
+import {Navigator} from "../navigator/navigator.js";
 
 export class BookingController extends BaseController {
 

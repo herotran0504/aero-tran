@@ -60,6 +60,9 @@ a {
     text-decoration: none;
     color: #FFF;
 }
+a:hover{
+    color: #3309ec;
+}
 
 .btn-primary {
     border-radius: 50px;

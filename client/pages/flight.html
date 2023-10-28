@@ -7,27 +7,35 @@
     <title>Flight</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>   
     <link rel="stylesheet" href="../styles/styles.css">
     <style>
         .detailLink {
-            text-decoration: none;
+            text-decoration: underline;
             color: #3309ec;
         }
-        .col-12{
+
+        .col-12 {
             padding: 10px;
         }
+
         .search-container {
             padding-left: 40px;
         }
-        .flightList-container{
+
+        .flightList-container {
             padding-left: 26px;
             padding-right: 26px;
         }
-        .flightDetails-container{
+
+        .flightDetails-container {
             padding-left: 26px;
             padding-right: 26px;
         }
     </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script type="module" src="../scripts/flightScript.js"></script>
 </head>
 
@@ -40,8 +48,9 @@
                     <div id="aero_tran"><a href="index.html">AeroTran</a></div>
                 </div>
                 <div id="nav_items">
-                    <div id="flights" class="nav-item"><a href="flight.html">Flights</a></div>
-                    <div id="bookings" class="nav-item" style="display: none"><a href="bookingdetails.html">My Bookings</a></div>
+                    <div id="flights" class="nav-item"><a class="nav-item_selected" href="flight.html">Flights</a></div>
+                    <div id="bookings" class="nav-item" style="display: none"><a href="bookingdetails.html">My
+                            Bookings</a></div>
                     <div id="about_us" class="nav-item"><a href="#">About Us</a></div>
                     <div id="contact_us" class="nav-item"><a href="#">Contact Us</a></div>
                     <div id="login" class="nav-item" style="display: none"><a href="login.html">Login</a></div>

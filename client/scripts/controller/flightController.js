@@ -1,7 +1,7 @@
-import {FlightView} from "../view/flightView.js";
-import {FlightRepository} from "../repository/flightRepository.js";
-import {Navigator} from "../navigator/navigator.js";
-import {Storage} from "../storage/storage.js";
+import { FlightView } from "../view/flightView.js";
+import { FlightRepository } from "../repository/flightRepository.js";
+import { Navigator } from "../navigator/navigator.js";
+import { Storage } from "../storage/storage.js";
 
 export class FlightController {
 
@@ -23,13 +23,17 @@ export class FlightController {
     async searchFlight(fromCity, toCity, departure, arrival) {
         try {
             const result = await this.flightRepository.searchFlight(fromCity, toCity, departure, arrival);
-            this.flightView.showFlightSearchSuccess(result, (url) => {
-                if (Storage.hasValidToken()) {
-                    Navigator.navigateTo(url);
-                } else {
-                    Navigator.navigateToLoginPage();
-                }
-            });
+            if(result.length > 0) {
+                this.flightView.showFlightSearchSuccess(result, (url) => {
+                    if (Storage.hasValidToken()) {
+                        Navigator.navigateTo(url);
+                    } else {
+                        Navigator.navigateToLoginPage();
+                    }
+                });
+            } else {
+                this.flightView.showFlightSearchFail();
+            }
         } catch (error) {
             console.log(error);
             this.flightView.showFlightSearchFail();

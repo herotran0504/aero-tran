@@ -22,8 +22,8 @@ export class FlightController {
 
     async searchFlight(fromCity, toCity, departure, arrival) {
         try {
-            await this.flightRepository.searchFlight(fromCity, toCity, departure, arrival);
-            this.flightView.showFlightSearchSuccess((url) => {
+            const result = await this.flightRepository.searchFlight(fromCity, toCity, departure, arrival);
+            this.flightView.showFlightSearchSuccess(result, (url) => {
                 if (Storage.hasValidToken()) {
                     Navigator.navigateTo(url);
                 } else {

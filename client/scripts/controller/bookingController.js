@@ -15,7 +15,6 @@ export class BookingController extends BaseController {
     async getBookingByUserId() {
         try {
             let result = await this.repository.requestBookingByUserId();
-            // console.log(result);
             this.view.showBookings(result);
         } catch (error) {
             console.log(error);
@@ -34,7 +33,7 @@ export class BookingController extends BaseController {
         }
     }
 
-    async getUserInforByLastBooking(flightId, isEco) {
+    async getUserInforByLastBooking(flightId) {
         try {
             let id = 1;
             let result = await this.repository.requestBookingByUserId(id);
@@ -80,8 +79,8 @@ export class BookingController extends BaseController {
     // add booking
     async addBooking(booking) {
         try {
-            let result = await this.repository.addBooking(booking);
-            Navigator.navigateToHomePage();
+            await this.repository.addBooking(booking);
+            Navigator.navigateToBookingDetails();
         } catch (error) {
             console.log(error);
             this.view.showError();
@@ -91,7 +90,7 @@ export class BookingController extends BaseController {
     // update booking
     async updateBooking(booking) {
         try {
-            let result = await this.repository.updateBooking(booking);
+            await this.repository.updateBooking(booking);
             alert("Booking update successfully!");
             Navigator.navigateToBookingDetails();
         } catch (error) {

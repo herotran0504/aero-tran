@@ -4,25 +4,6 @@ const URL = "http://localhost:5001";
 
 export class BookingRepository {
 
-    async requestBookings() {
-        const url = `${URL}/bookings`;
-
-        const requestOptions = {
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": Storage.retrieveToken()
-            },
-        };
-
-        const response = await fetch(url, requestOptions);
-        if (response.ok) {
-            let data = response.json();
-            return data;
-        } else {
-            throw new Error(`Bookings request failed with status ${response.status}`);
-        }
-    }
-
     async requestBookingById(id) {
         const url = `${URL}/bookings/${id}`;
 

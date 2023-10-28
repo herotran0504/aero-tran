@@ -15,7 +15,7 @@ window.onload = async function () {
 }
 
 async function addEventListeners() {
-    $("#form").on("submit", function (event) {
+    $("#bookingForm").on("submit", function (event) {
         event.preventDefault();
         let id = $("#idForUpdate").val();
         let userId = $("#userIdForUpdate").val();

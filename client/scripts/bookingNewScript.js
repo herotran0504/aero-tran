@@ -6,10 +6,10 @@ window.onload = async function () {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     let flightId = urlParams.get('flightId');
-    let isEco = urlParams.get('isEco');
-    
+    urlParams.get('isEco');
+
     //get all bookings by current user id
-    await controller.getUserInforByLastBooking(flightId,isEco);
+    await controller.getUserInforByLastBooking(flightId);
     $("#logout").on("click", () => {
         controller.handleLogout();
     });
@@ -17,7 +17,8 @@ window.onload = async function () {
 
 
 // add booking
-document.getElementById("btnAdd").addEventListener("click", async function () {
+document.getElementById("btnAdd").addEventListener("click",  function (event) {
+    event.preventDefault();
     let userId = document.getElementById("userIdNew").value;
     let flightId = document.getElementById("flightIdNew").value;
     let bookingDate = document.getElementById("bookingDateNew").value;
@@ -37,7 +38,7 @@ document.getElementById("btnAdd").addEventListener("click", async function () {
         },
         "status": status
     };
-    await controller.addBooking(booking);
+    controller.addBooking(booking);
     alert("Booking successfully!");  
     window.location.href = `/client/pages/index.html`; 
 });

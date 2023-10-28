@@ -138,6 +138,8 @@ export class FlightView {
         const doc = document;
         let td = doc.createElement('td');
         let btn = doc.createElement('button');
+        btn.classList.add('btn');
+        btn.classList.add('btn-primary');
         btn.textContent = "Book";
         let url = `/client/pages/bookingnew.html?flightId=${data.id}&isEco=${isEco}`;
         btn.addEventListener('click', () => {

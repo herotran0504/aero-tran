@@ -1901,7 +1901,7 @@ const flights = [
     }
   ];
 
-const BaseDao = require('./BaseDao');
+const BaseDao = require('./baseDao');
 
 class FlightDao extends BaseDao {
     constructor() {

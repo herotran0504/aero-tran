@@ -11,6 +11,9 @@ window.onload = async function () {
     console.log(id);
     //get booking by id
     await controller.getBookingById(id);
+    $("#logout").on("click", () => {
+        controller.handleLogout();
+    });
 }
 
 

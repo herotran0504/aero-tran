@@ -5,18 +5,16 @@ AeroTran is a flight booking system that allows users to search, book, and manag
 ## Features
 - **User Registration and Login**: Users can create accounts and securely log in.
 - **Flight Search**: Users can search for available flights based on destination, date, and class.
-- **Flight Booking**: Users can book flights and receive booking confirmations.
 - **User Profiles**: Users can manage their personal information and preferences.
-- **Booking History**: Users can view their booking history.
 - **Flight Details**: Detailed flight information, including layovers, duration, and aircraft type.
 - **Flight Filters**: Users can refine search results by price, airline, or departure time.
-- **Cancel/Modify Booking** (Nice-to-have): Users can cancel or modify their bookings with certain conditions and rules.
-- **Social Media Integration** (Nice-to-have): Users can share their flight bookings on social media platforms.
-- **Online Check-in** (Nice-to-have): Users can check in online and generate boarding passes.
+- **Flight Booking**: Users can book flights and receive booking confirmations.
+- **Booking History**: Users can view their booking history.
+- **Cancel/Modify Booking**: Users can cancel or modify their bookings with certain conditions and rules.
 
 ## Tech Stack
 - **Backend**: Node.js, Express.js, RESTful APIs, Clean Architecture
-- **Frontend**: HTML, CSS, JavaScript, Bootstrap
+- **Frontend**: HTML, CSS, JavaScript, Bootstrap, JQuery
 - **Database**: MongoDB
 
 ## Backend Components

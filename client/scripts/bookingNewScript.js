@@ -27,7 +27,6 @@ window.onload = async function () {
 
 // add booking
 document.getElementById("btnAdd").addEventListener("click", async function () {
-    let id = document.getElementById("idNew").value;
     let userId = document.getElementById("userIdNew").value;
     let flightId = document.getElementById("flightIdNew").value;
     let bookingDate = document.getElementById("bookingDateNew").value;
@@ -36,7 +35,7 @@ document.getElementById("btnAdd").addEventListener("click", async function () {
     let email = document.getElementById("emailNew").value;
     let status = document.getElementById("statusNew").value;
     let booking = {
-        "id": id,
+        "id": 1,
         "userId": userId,
         "flightId": flightId,
         "bookingDate": bookingDate,

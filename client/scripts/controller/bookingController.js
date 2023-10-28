@@ -39,6 +39,21 @@ export class BookingController {
             let id = 1;
             let result = await this.repository.requestBookingByUserId(id);
             let booking = result[0];
+            //check if can not any booking
+            if (booking == null || booking == undefined) {
+                booking = {
+                    "id": null,
+                    "userId": id,
+                    "flightId": null,
+                    "bookingDate": null,
+                    "passengerInfo": {
+                        "firstName": null,
+                        "lastName": null,
+                        "email": null
+                    },
+                    "status": null
+                };
+            }
             console.log(booking);
             console.log(result);
             booking.flightId = flightId;

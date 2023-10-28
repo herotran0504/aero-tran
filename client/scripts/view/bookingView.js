@@ -20,19 +20,11 @@ export class BoookingView {
                     <td>
                         <ul>
                             <li>
-                                <strong>Passenger 1:</strong>
+                                <strong>Passenger :</strong>
                                 <ul>
                                     <li>First Name: ${data[i].passengerInfo.firstName}</li>
                                     <li>Last Name: ${data[i].passengerInfo.lastName}</li>
                                     <li>Email: ${data[i].passengerInfo.email}</li>
-                                </ul>
-                            </li>
-                            <li>
-                                <strong>Passenger 2:</strong>
-                                <ul>
-                                    <li>First Name: Jane</li>
-                                    <li>Last Name: Smith</li>
-                                    <li>Email: jane@example.com</li>
                                 </ul>
                             </li>
                         </ul>
@@ -75,8 +67,8 @@ export class BoookingView {
         document.getElementById("statusNew").value = booking.status;
     }
    
-    showError() {
-        alert("Fetch user info error, we're notified")
-    }
+    // showError() {
+    //     alert("Fetch user info error, we're notified")
+    // }
 
 }

@@ -4,10 +4,106 @@
     <title>Booking Update</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script type="module" src="../scripts/bookingUpdateScript.js"></script>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <style>
+        body {
+            font-family: 'PT Sans', sans-serif;
+        }
+
+        #content-container {
+            background-image: url("../images/background.png");
+            width: 100%;
+            min-height: 1080px;
+        }
+
+        #slogan {
+            margin-top: 50px;
+            margin-left: 120px;
+            width: 50%;
+            height: 104px;
+            overflow: hidden;
+            font-size: 80px;
+            font-weight: bold;
+            text-align: left;
+            color: #F5F5F5;
+        }
+
+        #description {
+            margin-top: 60px;
+            margin-left: 120px;
+            width: 50%;
+            height: auto;
+            overflow: hidden;
+            font-size: 20px;
+            text-align: left;
+            line-height: 26px;
+            color: #F5F5F5;
+        }
+
+        .navbar {
+            display: flex;
+            padding-left: 120px;
+            padding-right: 120px;
+            width: 100%;
+            height: 88px;
+            background: rgba(0, 0, 0, 0.76);
+            opacity: 0.75
+        }
+
+        #logo {
+            float: left;
+            top: 24px;
+            width: auto;
+            height: 40px;
+        }
+
+        #nav_items {
+            float: right;
+            display: flex;
+            top: 36px;
+            margin-right: 0;
+            height: 18px;
+        }
+
+        .nav-item {
+            margin-left: 24px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #F5F5F5;
+        }
+
+        #aero_tran {
+            top: 0;
+            overflow: hidden;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: left;
+            line-height: 40px;
+            color: #fff;
+        }
+        .title {
+            font-size: 30px;
+            font-weight: bold;
+            color: #F5F5F5;
+        }
+    </style>
 </head>
 <body>
+    <div class="navbar">
+        <div id="logo">
+            <div id="aero_tran"><a href="index.html">AeroTran</a></div>
+        </div>
+        <div id="nav_items">
+            <div id="flights" class="nav-item"><a href="flight.html">Flights</a></div>
+            <div id="bookings" class="nav-item" ><a href="bookingdetails.html">My Bookings</a></div>
+            <div id="about_us" class="nav-item"><a href="#">About Us</a></div>
+            <div id="contact_us" class="nav-item"><a href="#">Contact Us</a></div>
+            <div id="userInfo" class="nav-item" ><a href="userinfo.html">My Account</a></div>
+            <div id="logout" class="nav-item" ><a href="#">Logout</a></div>
+        </div>
+    </div>
     <div class="container mt-4">
-        <h2>Update Booking detail</h2>
+        <h2 class="title">Update Booking Detail</h2>
         <form id="bookingForm">
             <div class="form-group">
                 <label for="id">Booking ID:</label>
@@ -30,12 +126,15 @@
                 <div class="passenger-info">
                     <div class="form-row">
                         <div class="col">
+                            <label for="passenger-info">First Name:</label>
                             <input type="text" class="form-control" id="firstNameForUpdate" placeholder="First Name" name="passengerFirstName[]" required>
                         </div>
                         <div class="col">
+                            <label for="passenger-info">Last Name:</label>
                             <input type="text" class="form-control" id="lastNameForUpdate" placeholder="Last Name" name="passengerLastName[]" required>
                         </div>
                         <div class="col">
+                            <label for="passenger-info">Email:</label>
                             <input type="email" class="form-control" id="emailForUpdate" placeholder="Email" name="passengerEmail[]" required>
                         </div>
                         <div class="col">

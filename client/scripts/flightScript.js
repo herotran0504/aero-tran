@@ -49,18 +49,15 @@ async function addApplyEvent() {
     applyForm.addEventListener('submit', (env) => {
         env.preventDefault();
         applyBtn.disable = true;
-        let startPrice = doc.getElementById('filterStartPrice').value;
-        let endPrice = doc.getElementById('filterEndPrice').value;
+        let startPrice = parseInt(doc.getElementById('filterStartPrice').value);
+        let endPrice = parseInt(doc.getElementById('filterEndPrice').value);
         let tableNodes = doc.getElementsByName("tbodyFlightsList")
         let childNodes = tableNodes[0].childNodes;
-        // console.log(childNodes);
         childNodes.forEach(node => {
             if(node.tagName == 'TR') {
                 node.classList.remove('d-none');
-                console.log(node);
                 let childs = node.children;
-                let ecoPrice = childs[3].children[0].children[1].textContent.substring(1);
-                console.log(ecoPrice);
+                let ecoPrice = parseInt(childs[3].children[0].children[1].textContent.substring(1));
                 if(ecoPrice < startPrice || ecoPrice > endPrice) {
                     node.classList.add('d-none');
                 }

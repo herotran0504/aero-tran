@@ -31,7 +31,7 @@ class Flight {
         this.ecoSeats = ecoSeats;
         this.availableEcoSeats = availableEcoSeats;
         this.businessSeats = businessSeats;
-        this.availlableBSeats = availableBSeats;
+        this.availableBSeats = availableBSeats;
         this.businessPrice = businessPrice;
         this.ecoPrice = ecoPrice;
         this.isDomestic = isDomestic;

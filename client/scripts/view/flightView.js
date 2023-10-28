@@ -97,7 +97,7 @@ export class FlightView {
 
         let h5 = doc.createElement('h5');
         h5.textContent = "Available seats: "
-        h5.textContent += isEco ? data.availableEcoSeats : data.availlableBSeats;
+        h5.textContent += isEco ? data.availableEcoSeats : data.availableBSeats;
 
         let bookBtn = this.createBookButton(data, isEco, onBookCallback);
 
@@ -189,13 +189,13 @@ export class FlightView {
         aircraftType.textContent = "Aircraft Type: " + data.aircraftType;
 
         let ecoPrice = doc.createElement('div');
-        ecoPrice.textContent = "Economy price: " + data.ecoPrice;
+        ecoPrice.textContent = "Economy price: $" + data.ecoPrice;
 
         let availableEcoSeats = doc.createElement('div');
         availableEcoSeats.textContent = "Total economy seats Available: " + data.availableEcoSeats;
 
         let businessPrice = doc.createElement('div');
-        businessPrice.textContent = "Business price: " + data.businessPrice;
+        businessPrice.textContent = "Business price: $" + data.businessPrice;
 
         let availableSeats = doc.createElement('div');
         availableSeats.textContent = "Total business seats Available: " + data.availableBSeats;
